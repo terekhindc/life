@@ -3239,6 +3239,59 @@ body.theme-laboratory .rule-item:hover {
     box-shadow: 0 5px 20px rgba(74, 144, 226, 0.3);
 }
 
+/* Laboratory theme specific controls styling */
+body.theme-laboratory .controls-help ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+body.theme-laboratory .controls-help li {
+    background: rgba(74, 144, 226, 0.05);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    border-radius: 8px;
+    padding: 12px 15px;
+    padding-left: 40px;
+    color: var(--laboratory-text-secondary);
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    position: relative;
+}
+
+body.theme-laboratory .controls-help li:hover {
+    background: rgba(74, 144, 226, 0.1);
+    border-color: #4a90e2;
+    color: var(--laboratory-text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+}
+
+body.theme-laboratory .controls-help li::before {
+    content: "▶";
+    color: #4a90e2;
+    font-size: 0.8rem;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+body.theme-laboratory .controls-help li:hover::before {
+    color: #50c878;
+    transform: translateY(-50%) scale(1.2);
+}
+
+body.theme-laboratory .controls-help h4 {
+    color: #4a90e2;
+    text-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
+}
+
+body.theme-laboratory .controls-help h4::after {
+    background: linear-gradient(90deg, #50c878, #4a90e2);
+}
+
 body.theme-watercolor .rule-item {
     background: rgba(255, 107, 157, 0.1);
     border-color: rgba(255, 107, 157, 0.3);
