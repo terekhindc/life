@@ -2345,6 +2345,113 @@ body.theme-bioluminescent .info-item span:last-child {
     text-shadow: 0 0 10px var(--accent-glow);
 }
 
+/* Game Over Screen */
+.game-over-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.game-over-screen.show {
+    opacity: 1;
+}
+
+.game-over-content {
+    text-align: center;
+    padding: 40px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 50px var(--accent-glow);
+    max-width: 500px;
+    width: 90%;
+}
+
+.game-over-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--accent-color);
+    margin: 0 0 20px 0;
+    text-shadow: 0 0 20px var(--accent-glow);
+    letter-spacing: 3px;
+    animation: gameOverPulse 2s ease-in-out infinite;
+}
+
+.game-over-text {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin: 0 0 30px 0;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.game-over-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.final-generation, .total-time {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.final-generation span, .total-time span {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+@keyframes gameOverPulse {
+    0%, 100% { 
+        transform: scale(1);
+        text-shadow: 0 0 20px var(--accent-glow);
+    }
+    50% { 
+        transform: scale(1.05);
+        text-shadow: 0 0 30px var(--accent-color);
+    }
+}
+
+/* Theme-specific game over styles */
+body.theme-cyber .game-over-title {
+    animation: cyberGlitch 2s ease-in-out infinite;
+}
+
+body.theme-retro .game-over-title {
+    color: #00ff00;
+    text-shadow: 0 0 20px #00ff00;
+    animation: retroPhosphor 1s ease-in-out infinite;
+}
+
+body.theme-bioluminescent .game-over-title {
+    animation: bioluminescentPulse 2s ease-in-out infinite;
+}
+
+body.theme-laboratory .game-over-content {
+    background: rgba(10, 20, 30, 0.95);
+    border-color: var(--accent-color);
+}
+
+body.theme-watercolor .game-over-content {
+    background: rgba(248, 244, 230, 0.95);
+    border-color: var(--accent-color);
+}
+
 .game-container {
     display: flex;
     justify-content: center;

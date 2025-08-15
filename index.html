@@ -104,9 +104,22 @@
         
 
         
-        <div class="game-container">
-            <canvas id="gameCanvas" title="Click to toggle cells • Drag to draw patterns"></canvas>
+            <div class="game-container">
+        <canvas id="gameCanvas" title="Click to toggle cells • Drag to draw patterns"></canvas>
+        
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" class="game-over-screen hidden">
+            <div class="game-over-content">
+                <h2 class="game-over-title">GAME OVER</h2>
+                <p class="game-over-text">All cells have perished. The universe has reached equilibrium.</p>
+                <div class="game-over-stats">
+                    <span class="final-generation">Final Generation: <span id="finalGeneration">0</span></span>
+                    <span class="total-time">Total Time: <span id="totalTime">0s</span></span>
+                </div>
+                <button id="restartBtn" class="btn btn-primary">🔄 RESTART UNIVERSE</button>
+            </div>
         </div>
+    </div>
         
         <div class="patterns">
             <h3>PRESET PATTERNS</h3>
