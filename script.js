@@ -73,10 +73,18 @@ class GameOfLife {
     
     loadTheme() {
         const savedTheme = localStorage.getItem('gameOfLifeTheme') || 'classic';
-        this.setTheme(savedTheme);
+        // Check if the saved theme is still valid (exists in HTML)
+        const validThemes = ['classic', 'cyber', 'bioluminescent', 'retro', 'architectural', 'laboratory', 'watercolor'];
+        const themeToLoad = validThemes.includes(savedTheme) ? savedTheme : 'classic';
+        this.setTheme(themeToLoad);
     }
     
     setTheme(theme) {
+        // Validate theme
+        const validThemes = ['classic', 'cyber', 'bioluminescent', 'retro', 'architectural', 'laboratory', 'watercolor'];
+        if (!validThemes.includes(theme)) {
+            theme = 'classic';
+        }
         this.currentTheme = theme;
         
         // Set body class based on theme
@@ -101,7 +109,10 @@ class GameOfLife {
         document.querySelectorAll('.theme-option').forEach(option => {
             option.classList.remove('active');
         });
-        document.querySelector(`[data-theme="${theme}"]`).classList.add('active');
+        const themeElement = document.querySelector(`[data-theme="${theme}"]`);
+        if (themeElement) {
+            themeElement.classList.add('active');
+        }
         
         // Update edition text based on theme
         const editionText = document.getElementById('editionText');
