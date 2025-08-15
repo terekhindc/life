@@ -150,13 +150,46 @@
         
         <div class="instructions">
             <h3>HOW TO PLAY</h3>
-            <ul>
-                <li>Click on cells to toggle them alive/dead</li>
-                <li>Use preset patterns to see interesting behaviors</li>
-                <li>Adjust speed to control simulation rate</li>
-                <li>Watch how patterns evolve over generations!</li>
-                <li>Experiment with your own creations</li>
-            </ul>
+            <div class="game-rules">
+                <h4>THE FOUR LAWS OF LIFE</h4>
+                <div class="rules-grid">
+                    <div class="rule-item">
+                        <div class="rule-number">1</div>
+                        <div class="rule-content">
+                            <strong>Survival:</strong> A live cell with 2 or 3 neighbors survives
+                        </div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-number">2</div>
+                        <div class="rule-content">
+                            <strong>Death:</strong> A live cell with fewer than 2 neighbors dies (underpopulation)
+                        </div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-number">3</div>
+                        <div class="rule-content">
+                            <strong>Death:</strong> A live cell with more than 3 neighbors dies (overpopulation)
+                        </div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-number">4</div>
+                        <div class="rule-content">
+                            <strong>Birth:</strong> A dead cell with exactly 3 neighbors becomes alive
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="controls-help">
+                <h4>CONTROLS</h4>
+                <ul>
+                    <li>Click on cells to toggle them alive/dead</li>
+                    <li>Drag with mouse to draw patterns</li>
+                    <li>Use preset patterns to see interesting behaviors</li>
+                    <li>Adjust speed to control simulation rate</li>
+                    <li>Watch how patterns evolve over generations!</li>
+                    <li>Experiment with your own creations</li>
+                </ul>
+            </div>
         </div>
 
         <footer>
