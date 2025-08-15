@@ -7,191 +7,34 @@
 }
 
 :root {
-    /* Classic Theme Variables - Simple & Minimal */
-    --classic-primary-bg: #ffffff;
-    --classic-secondary-bg: #f5f5f5;
-    --classic-accent-color: #000000;
-    --classic-accent-glow: #00000000;
-    --classic-success-color: #000000;
-    --classic-warning-color: #000000;
-    --classic-danger-color: #000000;
-    --classic-text-primary: #000000;
-    --classic-text-secondary: #666666;
-    --classic-border-color: #cccccc;
-    --classic-card-bg: #ffffff;
-    --classic-glass-bg: #ffffff;
-    --classic-shadow-glow: none;
-    --classic-shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1);
-    --classic-gradient: #ffffff;
+    /* Base variables - will be overridden by ThemeService */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --accent-color: #007bff;
+    --accent-glow: rgba(0, 123, 255, 0.3);
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --shadow-glow: 0 0 20px rgba(0, 123, 255, 0.2);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --accent-secondary: #0056b3;
+    --gradient: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
 
-    /* Cyber Theme Variables - Futuristic & Bold */
-    --cyber-primary-bg: #0a0a0f;
-    --cyber-secondary-bg: #1a1a2e;
-    --cyber-accent-color: #ff006e;
-    --cyber-accent-glow: #ff006e40;
-    --cyber-accent-secondary: #00d4ff;
-    --cyber-accent-tertiary: #ffd700;
-    --cyber-success-color: #00ff88;
-    --cyber-warning-color: #ff6b35;
-    --cyber-danger-color: #ff4757;
-    --cyber-text-primary: #ffffff;
-    --cyber-text-secondary: #00d4ff;
-    --cyber-border-color: #ff006e;
-    --cyber-card-bg: rgba(26, 26, 46, 0.9);
-    --cyber-glass-bg: rgba(255, 0, 110, 0.1);
-    --cyber-shadow-glow: 0 0 30px rgba(255, 0, 110, 0.6);
-    --cyber-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --cyber-gradient: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #2d1b69 100%);
-    --cyber-glow: 0 0 20px rgba(255, 0, 110, 0.6);
-    --cyber-text-glow: 0 0 10px rgba(255, 0, 110, 0.8);
-
-    /* Bioluminescent Theme Variables - Deep Ocean & Organic */
-    --bioluminescent-primary-bg: #0a0a1a;
-    --bioluminescent-secondary-bg: #1a1a2e;
-    --bioluminescent-accent-color: #00ffff;
-    --bioluminescent-accent-glow: #00ffff40;
-    --bioluminescent-success-color: #00ff88;
-    --bioluminescent-warning-color: #ff6b35;
-    --bioluminescent-danger-color: #ff4757;
-    --bioluminescent-text-primary: #e0f7ff;
-    --bioluminescent-text-secondary: #a0d8ff;
-    --bioluminescent-border-color: #2a2a4e;
-    --bioluminescent-card-bg: rgba(26, 26, 46, 0.9);
-    --bioluminescent-glass-bg: rgba(0, 255, 255, 0.05);
-    --bioluminescent-shadow-glow: 0 0 30px var(--bioluminescent-accent-glow);
-    --bioluminescent-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
-    --bioluminescent-gradient: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a1a 70%);
-
-    /* Retro-Futuristic Theme Variables - CRT Monitor Style */
-    --retro-primary-bg: #000000;
-    --retro-secondary-bg: #0a0a0a;
-    --retro-accent-color: #00ff00;
-    --retro-accent-glow: #00ff0040;
-    --retro-accent-secondary: #ffaa00;
-    --retro-accent-tertiary: #00ffff;
-    --retro-success-color: #00ff00;
-    --retro-warning-color: #ffaa00;
-    --retro-danger-color: #ff0000;
-    --retro-text-primary: #00ff00;
-    --retro-text-secondary: #00aa00;
-    --retro-border-color: #00ff00;
-    --retro-card-bg: rgba(0, 0, 0, 0.9);
-    --retro-glass-bg: rgba(0, 255, 0, 0.05);
-    --retro-shadow-glow: 0 0 20px var(--retro-accent-glow);
-    --retro-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.8);
-    --retro-gradient: radial-gradient(ellipse at center, #001100 0%, #000000 70%);
-    --retro-glow: 0 0 20px rgba(0, 255, 0, 0.6);
-    --retro-text-glow: 0 0 10px rgba(0, 255, 0, 0.8);
-    --retro-scan-line: linear-gradient(transparent 50%, rgba(0, 255, 0, 0.1) 50%);
-
-    /* Architectural Theme Variables - Technical Drawing Style */
-    --architectural-primary-bg: #1a3a5f;
-    --architectural-secondary-bg: #0f2a4a;
-    --architectural-accent-color: #ffffff;
-    --architectural-accent-glow: #ffffff40;
-    --architectural-accent-secondary: #87ceeb;
-    --architectural-accent-tertiary: #b0e0e6;
-    --architectural-success-color: #ffffff;
-    --architectural-warning-color: #ffd700;
-    --architectural-danger-color: #ff6b6b;
-    --architectural-text-primary: #ffffff;
-    --architectural-text-secondary: #87ceeb;
-    --architectural-border-color: #4a90e2;
-    --architectural-card-bg: rgba(15, 42, 74, 0.95);
-    --architectural-glass-bg: rgba(255, 255, 255, 0.05);
-    --architectural-shadow-glow: 0 0 20px var(--architectural-accent-glow);
-    --architectural-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.6);
-    --architectural-gradient: linear-gradient(135deg, #1a3a5f 0%, #0f2a4a 50%, #1e3a5f 100%);
-    --architectural-glow: 0 0 20px rgba(255, 255, 255, 0.3);
-    --architectural-text-glow: 0 0 10px rgba(255, 255, 255, 0.5);
-    --architectural-grid: linear-gradient(rgba(74, 144, 226, 0.1) 1px, transparent 1px),
-                          linear-gradient(90deg, rgba(74, 144, 226, 0.1) 1px, transparent 1px);
-
-    /* Laboratory Theme Variables - Petri Dish & Microorganisms */
-    --laboratory-primary-bg: #f0f8ff;
-    --laboratory-secondary-bg: #e6f3ff;
-    --laboratory-accent-color: #4a90e2;
-    --laboratory-accent-glow: #4a90e240;
-    --laboratory-accent-secondary: #50c878;
-    --laboratory-accent-tertiary: #ff6b6b;
-    --laboratory-success-color: #50c878;
-    --laboratory-warning-color: #ffa500;
-    --laboratory-danger-color: #ff6b6b;
-    --laboratory-text-primary: #2c3e50;
-    --laboratory-text-secondary: #34495e;
-    --laboratory-border-color: #bdc3c7;
-    --laboratory-card-bg: rgba(240, 248, 255, 0.95);
-    --laboratory-glass-bg: rgba(74, 144, 226, 0.05);
-    --laboratory-shadow-glow: 0 0 20px var(--laboratory-accent-glow);
-    --laboratory-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.1);
-    --laboratory-gradient: radial-gradient(ellipse at center, #f0f8ff 0%, #e6f3ff 70%);
-    --laboratory-glow: 0 0 20px rgba(74, 144, 226, 0.3);
-    --laboratory-text-glow: 0 0 10px rgba(74, 144, 226, 0.5);
-    --laboratory-agar: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9) 0%, rgba(240, 248, 255, 0.7) 30%, rgba(230, 243, 255, 0.5) 60%, rgba(220, 238, 255, 0.3) 100%);
-    --laboratory-agar-texture: repeating-radial-gradient(circle at 20% 20%, transparent 0, transparent 40px, rgba(74, 144, 226, 0.03) 40px, rgba(74, 144, 226, 0.03) 41px);
-    --laboratory-petri-border: linear-gradient(45deg, rgba(74, 144, 226, 0.3), rgba(80, 200, 120, 0.2), rgba(74, 144, 226, 0.3));
-
-
-
-    /* Watercolor Theme Variables - Artistic Painting */
-    --watercolor-primary-bg: #fefefe;
-    --watercolor-secondary-bg: #f5f5f5;
-    --watercolor-accent-color: #8e44ad;
-    --watercolor-accent-glow: #8e44ad20;
-    --watercolor-accent-secondary: #3498db;
-    --watercolor-accent-tertiary: #e74c3c;
-    --watercolor-success-color: #27ae60;
-    --watercolor-warning-color: #f39c12;
-    --watercolor-danger-color: #e74c3c;
-    --watercolor-text-primary: #2c3e50;
-    --watercolor-text-secondary: #34495e;
-    --watercolor-border-color: #95a5a6;
-    --watercolor-card-bg: rgba(254, 254, 254, 0.95);
-    --watercolor-glass-bg: rgba(142, 68, 173, 0.05);
-    --watercolor-shadow-glow: 0 0 20px var(--watercolor-accent-glow);
-    --watercolor-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.08);
-    --watercolor-gradient: radial-gradient(ellipse at center, #fefefe 0%, #f5f5f5 70%);
-    --watercolor-glow: 0 0 20px rgba(142, 68, 173, 0.2);
-    --watercolor-text-glow: 0 0 10px rgba(142, 68, 173, 0.3);
-    --watercolor-paper-texture: repeating-radial-gradient(circle at 20% 20%, transparent 0, transparent 40px, rgba(0, 0, 0, 0.02) 40px, rgba(0, 0, 0, 0.02) 41px);
-    --watercolor-paper-color: #fafafa;
-    --watercolor-brush-stroke: rgba(142, 68, 173, 0.8);
-
-    /* Default to Classic Theme */
-    --primary-bg: var(--classic-primary-bg);
-    --secondary-bg: var(--classic-secondary-bg);
-    --accent-color: var(--classic-accent-color);
-    --accent-glow: var(--classic-accent-glow);
-    --success-color: var(--classic-success-color);
-    --warning-color: var(--classic-warning-color);
-    --danger-color: var(--classic-danger-color);
-    --text-primary: var(--classic-text-primary);
-    --text-secondary: var(--classic-text-secondary);
-    --border-color: var(--classic-border-color);
-    --card-bg: var(--classic-card-bg);
-    --glass-bg: var(--classic-glass-bg);
-    --shadow-glow: var(--classic-shadow-glow);
-    --shadow-card: var(--classic-shadow-card);
-    --gradient: var(--classic-gradient);
+/* Ensure full viewport coverage */
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 /* Laboratory Theme */
 body.theme-laboratory {
-    --primary-bg: var(--laboratory-primary-bg);
-    --secondary-bg: var(--laboratory-secondary-bg);
-    --accent-color: var(--laboratory-accent-color);
-    --accent-glow: var(--laboratory-accent-glow);
-    --success-color: var(--laboratory-success-color);
-    --warning-color: var(--laboratory-warning-color);
-    --danger-color: var(--laboratory-danger-color);
-    --text-primary: var(--laboratory-text-primary);
-    --text-secondary: var(--laboratory-text-secondary);
-    --border-color: var(--laboratory-border-color);
-    --card-bg: var(--laboratory-card-bg);
-    --glass-bg: var(--laboratory-glass-bg);
-    --shadow-glow: var(--laboratory-shadow-glow);
-    --shadow-card: var(--laboratory-shadow-card);
-    --gradient: var(--laboratory-gradient);
     font-family: 'Inter', sans-serif;
 }
 
@@ -199,21 +42,6 @@ body.theme-laboratory {
 
 /* Watercolor Theme */
 body.theme-watercolor {
-    --primary-bg: var(--watercolor-primary-bg);
-    --secondary-bg: var(--watercolor-secondary-bg);
-    --accent-color: var(--watercolor-accent-color);
-    --accent-glow: var(--watercolor-accent-glow);
-    --success-color: var(--watercolor-success-color);
-    --warning-color: var(--watercolor-warning-color);
-    --danger-color: var(--watercolor-danger-color);
-    --text-primary: var(--watercolor-text-primary);
-    --text-secondary: var(--watercolor-text-secondary);
-    --border-color: var(--watercolor-border-color);
-    --card-bg: var(--watercolor-card-bg);
-    --glass-bg: var(--watercolor-glass-bg);
-    --shadow-glow: var(--watercolor-shadow-glow);
-    --shadow-card: var(--watercolor-shadow-card);
-    --gradient: var(--watercolor-gradient);
     font-family: 'Georgia', serif;
 }
 
@@ -221,61 +49,16 @@ body.theme-watercolor {
 
 /* Architectural Theme */
 body.theme-architectural {
-    --primary-bg: var(--architectural-primary-bg);
-    --secondary-bg: var(--architectural-secondary-bg);
-    --accent-color: var(--architectural-accent-color);
-    --accent-glow: var(--architectural-accent-glow);
-    --success-color: var(--architectural-success-color);
-    --warning-color: var(--architectural-warning-color);
-    --danger-color: var(--architectural-danger-color);
-    --text-primary: var(--architectural-text-primary);
-    --text-secondary: var(--architectural-text-secondary);
-    --border-color: var(--architectural-border-color);
-    --card-bg: var(--architectural-card-bg);
-    --glass-bg: var(--architectural-glass-bg);
-    --shadow-glow: var(--architectural-shadow-glow);
-    --shadow-card: var(--architectural-shadow-card);
-    --gradient: var(--architectural-gradient);
     font-family: 'Courier New', monospace;
 }
 
 /* Retro-Futuristic Theme */
 body.theme-retro {
-    --primary-bg: var(--retro-primary-bg);
-    --secondary-bg: var(--retro-secondary-bg);
-    --accent-color: var(--retro-accent-color);
-    --accent-glow: var(--retro-accent-glow);
-    --success-color: var(--retro-success-color);
-    --warning-color: var(--retro-warning-color);
-    --danger-color: var(--retro-danger-color);
-    --text-primary: var(--retro-text-primary);
-    --text-secondary: var(--retro-text-secondary);
-    --border-color: var(--retro-border-color);
-    --card-bg: var(--retro-card-bg);
-    --glass-bg: var(--retro-glass-bg);
-    --shadow-glow: var(--retro-shadow-glow);
-    --shadow-card: var(--retro-shadow-card);
-    --gradient: var(--retro-gradient);
     font-family: 'Courier New', monospace;
 }
 
 /* Classic Theme */
 body.theme-classic {
-    --primary-bg: var(--classic-primary-bg);
-    --secondary-bg: var(--classic-secondary-bg);
-    --accent-color: var(--classic-accent-color);
-    --accent-glow: var(--classic-accent-glow);
-    --success-color: var(--classic-success-color);
-    --warning-color: var(--classic-warning-color);
-    --danger-color: var(--classic-danger-color);
-    --text-primary: var(--classic-text-primary);
-    --text-secondary: var(--classic-text-secondary);
-    --border-color: var(--classic-border-color);
-    --card-bg: var(--classic-card-bg);
-    --glass-bg: var(--classic-glass-bg);
-    --shadow-glow: var(--classic-shadow-glow);
-    --shadow-card: var(--classic-shadow-card);
-    --gradient: var(--classic-gradient);
     font-family: 'Courier New', monospace;
 }
 
@@ -533,111 +316,31 @@ body.theme-classic ::-webkit-scrollbar-thumb:hover {
 
 /* Cyber Theme */
 body.theme-cyber {
-    --primary-bg: var(--cyber-primary-bg);
-    --secondary-bg: var(--cyber-secondary-bg);
-    --accent-color: var(--cyber-accent-color);
-    --accent-glow: var(--cyber-accent-glow);
-    --success-color: var(--cyber-success-color);
-    --warning-color: var(--cyber-warning-color);
-    --danger-color: var(--cyber-danger-color);
-    --text-primary: var(--cyber-text-primary);
-    --text-secondary: var(--cyber-text-secondary);
-    --border-color: var(--cyber-border-color);
-    --card-bg: var(--cyber-card-bg);
-    --glass-bg: var(--cyber-glass-bg);
-    --shadow-glow: var(--cyber-shadow-glow);
-    --shadow-card: var(--cyber-shadow-card);
-    --gradient: var(--cyber-gradient);
+    font-family: 'Rajdhani', sans-serif;
 }
 
 /* Bioluminescent Theme */
 body.theme-bioluminescent {
-    --primary-bg: var(--bioluminescent-primary-bg);
-    --secondary-bg: var(--bioluminescent-secondary-bg);
-    --accent-color: var(--bioluminescent-accent-color);
-    --accent-glow: var(--bioluminescent-accent-glow);
-    --success-color: var(--bioluminescent-success-color);
-    --warning-color: var(--bioluminescent-warning-color);
-    --danger-color: var(--bioluminescent-danger-color);
-    --text-primary: var(--bioluminescent-text-primary);
-    --text-secondary: var(--bioluminescent-text-secondary);
-    --border-color: var(--bioluminescent-border-color);
-    --card-bg: var(--bioluminescent-card-bg);
-    --glass-bg: var(--bioluminescent-glass-bg);
-    --shadow-glow: var(--bioluminescent-shadow-glow);
-    --shadow-card: var(--bioluminescent-shadow-card);
-    --gradient: var(--bioluminescent-gradient);
+    font-family: 'Rajdhani', sans-serif;
 }
 
 body {
     font-family: 'Inter', sans-serif;
     background: var(--gradient);
+    background-attachment: fixed;
+    background-size: cover;
     min-height: 100vh;
     color: var(--text-primary);
     overflow-x: hidden;
     position: relative;
     transition: all 0.5s ease;
+    margin: 0;
+    padding: 0;
 }
 
-body.theme-cyber {
-    font-family: 'Rajdhani', sans-serif;
-}
 
-body.theme-bioluminescent {
-    font-family: 'Rajdhani', sans-serif;
-}
 
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(255, 107, 53, 0.05) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-body.theme-cyber::before {
-    opacity: 1;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(255, 0, 110, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
-}
-
-body.theme-bioluminescent::before {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(160, 216, 255, 0.08) 0%, transparent 50%);
-    opacity: 1;
-}
-
-body.theme-retro::before {
-    opacity: 1;
-    background: 
-        radial-gradient(circle at 50% 50%, rgba(0, 255, 0, 0.1) 0%, transparent 70%),
-        var(--retro-scan-line);
-    background-size: 100% 100%, 100% 4px;
-    animation: retroScan 0.1s linear infinite;
-}
-
-body.theme-architectural::before {
-    opacity: 1;
-    background: 
-        var(--architectural-grid),
-        radial-gradient(circle at 20% 80%, rgba(135, 206, 235, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(176, 224, 230, 0.1) 0%, transparent 50%);
-    background-size: 20px 20px, 100% 100%, 100% 100%;
-    animation: architecturalDraw 3s ease-in-out infinite;
-}
+/* Removed body::before pseudo-elements that were causing background positioning issues */
 
 .container {
     max-width: 1400px;
@@ -2541,9 +2244,9 @@ body.theme-3d .game-container::before {
 }
 
 body.theme-cyber #gameCanvas {
-    border: 3px solid #ff006e;
-    background: #0a0a0f;
-    box-shadow: 0 0 30px rgba(255, 0, 110, 0.4);
+    border: 3px solid var(--accent-color);
+    background: var(--primary-bg);
+    box-shadow: 0 0 30px var(--accent-glow);
 }
 
 body.theme-cyber #gameCanvas:hover {
@@ -2558,9 +2261,9 @@ body.theme-cyber .game-container::before {
 }
 
 body.theme-bioluminescent #gameCanvas {
-    border: 3px solid #00ffff;
-    background: #0a0a1a;
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+    border: 3px solid var(--accent-color);
+    background: var(--primary-bg);
+    box-shadow: 0 0 30px var(--accent-glow);
 }
 
 body.theme-bioluminescent #gameCanvas:hover {
@@ -2576,9 +2279,9 @@ body.theme-bioluminescent .game-container::before {
 }
 
 body.theme-retro #gameCanvas {
-    border: 3px solid #00ff00;
-    background: #000000;
-    box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
+    border: 3px solid var(--accent-color);
+    background: var(--primary-bg);
+    box-shadow: 0 0 30px var(--accent-glow);
     position: relative;
 }
 
@@ -2610,9 +2313,9 @@ body.theme-retro .game-container::before {
 }
 
 body.theme-architectural #gameCanvas {
-    border: 3px solid #ffffff;
-    background: #1a3a5f;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    border: 3px solid var(--accent-color);
+    background: var(--primary-bg);
+    box-shadow: 0 0 30px var(--accent-glow);
     position: relative;
 }
 
