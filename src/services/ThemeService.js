@@ -21,7 +21,8 @@ export class ThemeService {
                 '--glass-bg': 'rgba(255, 255, 255, 0.1)',
                 '--shadow-glow': '0 0 20px rgba(0, 123, 255, 0.2)',
                 '--shadow-card': '0 8px 32px rgba(0, 0, 0, 0.1)',
-                '--accent-secondary': '#0056b3'
+                '--accent-secondary': '#0056b3',
+                '--gradient': 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)'
             },
             cyber: {
                 '--primary-bg': '#0a0a0f',
@@ -38,7 +39,8 @@ export class ThemeService {
                 '--glass-bg': 'rgba(255, 0, 110, 0.1)',
                 '--shadow-glow': '0 0 20px rgba(255, 0, 110, 0.4)',
                 '--shadow-card': '0 8px 32px rgba(0, 0, 0, 0.3)',
-                '--accent-secondary': '#00d4ff'
+                '--accent-secondary': '#00d4ff',
+                '--gradient': 'linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%)'
             },
             bioluminescent: {
                 '--primary-bg': '#0a0a1a',
@@ -55,7 +57,8 @@ export class ThemeService {
                 '--glass-bg': 'rgba(0, 255, 255, 0.1)',
                 '--shadow-glow': '0 0 20px rgba(0, 255, 255, 0.4)',
                 '--shadow-card': '0 8px 32px rgba(0, 0, 0, 0.3)',
-                '--accent-secondary': '#00ff88'
+                '--accent-secondary': '#00ff88',
+                '--gradient': 'linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%)'
             },
             retro: {
                 '--primary-bg': '#000000',
@@ -73,7 +76,8 @@ export class ThemeService {
                 '--shadow-glow': '0 0 20px rgba(0, 255, 0, 0.4)',
                 '--shadow-card': '0 8px 32px rgba(0, 0, 0, 0.3)',
                 '--retro-scan-line': 'linear-gradient(0deg, transparent 0%, rgba(0, 255, 0, 0.1) 50%, transparent 100%)',
-                '--accent-secondary': '#ffaa00'
+                '--accent-secondary': '#ffaa00',
+                '--gradient': 'linear-gradient(135deg, #000000 0%, #0a0a0a 100%)'
             },
             architectural: {
                 '--primary-bg': '#1a3a5f',
@@ -91,7 +95,8 @@ export class ThemeService {
                 '--shadow-glow': '0 0 20px rgba(255, 255, 255, 0.3)',
                 '--shadow-card': '0 8px 32px rgba(0, 0, 0, 0.6)',
                 '--architectural-grid': 'linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(0deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)',
-                '--accent-secondary': '#87ceeb'
+                '--accent-secondary': '#87ceeb',
+                '--gradient': 'linear-gradient(135deg, #1a3a5f 0%, #0f2a4a 100%)'
             },
             laboratory: {
                 '--primary-bg': '#f0f8ff',
@@ -111,7 +116,8 @@ export class ThemeService {
                 '--laboratory-petri-border': 'linear-gradient(45deg, rgba(74, 144, 226, 0.8), rgba(74, 144, 226, 0.4))',
                 '--laboratory-agar': 'radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9) 0%, rgba(240, 248, 255, 0.7) 50%, rgba(230, 243, 255, 0.5) 100%)',
                 '--laboratory-agar-texture': 'radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.8) 0%, rgba(240, 248, 255, 0.6) 50%, rgba(230, 243, 255, 0.4) 100%)',
-                '--accent-secondary': '#87ceeb'
+                '--accent-secondary': '#87ceeb',
+                '--gradient': 'linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%)'
             },
             watercolor: {
                 '--primary-bg': '#f8f4f0',
@@ -131,7 +137,8 @@ export class ThemeService {
                 '--watercolor-paper-color': '#f8f4f0',
                 '--watercolor-paper-texture': 'radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8) 0%, transparent 50%)',
                 '--watercolor-accent-secondary': '#ff8fab',
-                '--accent-secondary': '#ff8fab'
+                '--accent-secondary': '#ff8fab',
+                '--gradient': 'linear-gradient(135deg, #f8f4f0 0%, #f0e6e0 100%)'
             }
         };
     }
