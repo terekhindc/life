@@ -81,9 +81,6 @@ class GameOfLife {
         const validThemes = ['classic', 'cyber', 'bioluminescent', 'retro', 'architectural', 'laboratory', 'watercolor'];
         const themeToLoad = validThemes.includes(savedTheme) ? savedTheme : 'classic';
         this.setTheme(themeToLoad);
-        
-        // Force initial CSS variables update
-        this.updateCSSVariables(themeToLoad);
     }
     
     setTheme(theme) {
@@ -114,8 +111,7 @@ class GameOfLife {
             document.body.classList.add('theme-watercolor');
         }
         
-        // Force CSS variable update
-        this.updateCSSVariables(theme);
+        // No CSS variables needed - themes use direct colors
         
         // Update theme switcher
         document.querySelectorAll('.theme-option').forEach(option => {
@@ -176,133 +172,7 @@ class GameOfLife {
         this.draw();
     }
     
-    updateCSSVariables(theme) {
-        const root = document.documentElement;
-        
-        // Define theme variables
-        const themeVariables = {
-            classic: {
-                '--primary-bg': '#ffffff',
-                '--secondary-bg': '#f8f9fa',
-                '--accent-color': '#007bff',
-                '--accent-glow': 'rgba(0, 123, 255, 0.3)',
-                '--success-color': '#28a745',
-                '--warning-color': '#ffc107',
-                '--danger-color': '#dc3545',
-                '--text-primary': '#212529',
-                '--text-secondary': '#6c757d',
-                '--border-color': '#dee2e6',
-                '--card-bg': 'rgba(255, 255, 255, 0.95)',
-                '--glass-bg': 'rgba(255, 255, 255, 0.1)',
-                '--shadow-glow': '0 0 20px rgba(0, 123, 255, 0.2)',
-                '--shadow-card': '0 8px 32px rgba(0, 0, 0, 0.1)'
-            },
-            cyber: {
-                '--primary-bg': '#0a0a0f',
-                '--secondary-bg': '#1a1a2e',
-                '--accent-color': '#ff006e',
-                '--accent-glow': 'rgba(255, 0, 110, 0.3)',
-                '--success-color': '#00d4ff',
-                '--warning-color': '#ffd700',
-                '--danger-color': '#ff006e',
-                '--text-primary': '#ffffff',
-                '--text-secondary': '#b0b0b0',
-                '--border-color': '#333366',
-                '--card-bg': 'rgba(26, 26, 46, 0.95)',
-                '--glass-bg': 'rgba(255, 0, 110, 0.1)',
-                '--shadow-glow': '0 0 20px rgba(255, 0, 110, 0.4)',
-                '--shadow-card': '0 8px 32px rgba(0, 0, 0, 0.3)'
-            },
-            bioluminescent: {
-                '--primary-bg': '#0a0a1a',
-                '--secondary-bg': '#1a1a3a',
-                '--accent-color': '#00ffff',
-                '--accent-glow': 'rgba(0, 255, 255, 0.3)',
-                '--success-color': '#00ff88',
-                '--warning-color': '#ffaa00',
-                '--danger-color': '#ff0066',
-                '--text-primary': '#ffffff',
-                '--text-secondary': '#b0b0b0',
-                '--border-color': '#2a2a4e',
-                '--card-bg': 'rgba(26, 26, 58, 0.95)',
-                '--glass-bg': 'rgba(0, 255, 255, 0.1)',
-                '--shadow-glow': '0 0 20px rgba(0, 255, 255, 0.4)',
-                '--shadow-card': '0 8px 32px rgba(0, 0, 0, 0.3)'
-            },
-            retro: {
-                '--primary-bg': '#000000',
-                '--secondary-bg': '#0a0a0a',
-                '--accent-color': '#00ff00',
-                '--accent-glow': 'rgba(0, 255, 0, 0.3)',
-                '--success-color': '#00ff00',
-                '--warning-color': '#ffaa00',
-                '--danger-color': '#ff0000',
-                '--text-primary': '#00ff00',
-                '--text-secondary': '#00aa00',
-                '--border-color': '#00ff00',
-                '--card-bg': 'rgba(0, 0, 0, 0.95)',
-                '--glass-bg': 'rgba(0, 255, 0, 0.1)',
-                '--shadow-glow': '0 0 20px rgba(0, 255, 0, 0.4)',
-                '--shadow-card': '0 8px 32px rgba(0, 0, 0, 0.3)'
-            },
-            architectural: {
-                '--primary-bg': '#f5f5f5',
-                '--secondary-bg': '#e8e8e8',
-                '--accent-color': '#87ceeb',
-                '--accent-glow': 'rgba(135, 206, 235, 0.3)',
-                '--success-color': '#4682b4',
-                '--warning-color': '#ffa500',
-                '--danger-color': '#dc143c',
-                '--text-primary': '#2f4f4f',
-                '--text-secondary': '#696969',
-                '--border-color': '#c0c0c0',
-                '--card-bg': 'rgba(245, 245, 245, 0.95)',
-                '--glass-bg': 'rgba(135, 206, 235, 0.1)',
-                '--shadow-glow': '0 0 20px rgba(135, 206, 235, 0.3)',
-                '--shadow-card': '0 8px 32px rgba(0, 0, 0, 0.1)'
-            },
-            laboratory: {
-                '--primary-bg': '#f0f8ff',
-                '--secondary-bg': '#e6f3ff',
-                '--accent-color': '#4a90e2',
-                '--accent-glow': 'rgba(74, 144, 226, 0.3)',
-                '--success-color': '#50c878',
-                '--warning-color': '#ffa500',
-                '--danger-color': '#ff6b6b',
-                '--text-primary': '#2c3e50',
-                '--text-secondary': '#34495e',
-                '--border-color': '#bdc3c7',
-                '--card-bg': 'rgba(240, 248, 255, 0.95)',
-                '--glass-bg': 'rgba(74, 144, 226, 0.05)',
-                '--shadow-glow': '0 0 20px rgba(74, 144, 226, 0.2)',
-                '--shadow-card': '0 8px 32px rgba(0, 0, 0, 0.1)'
-            },
-            watercolor: {
-                '--primary-bg': '#f8f4f0',
-                '--secondary-bg': '#f0e6e0',
-                '--accent-color': '#ff6b9d',
-                '--accent-glow': 'rgba(255, 107, 157, 0.3)',
-                '--success-color': '#ff8fab',
-                '--warning-color': '#ffb347',
-                '--danger-color': '#ff6b6b',
-                '--text-primary': '#4a4a4a',
-                '--text-secondary': '#6b6b6b',
-                '--border-color': '#d4a5a5',
-                '--card-bg': 'rgba(248, 244, 240, 0.95)',
-                '--glass-bg': 'rgba(255, 107, 157, 0.1)',
-                '--shadow-glow': '0 0 20px rgba(255, 107, 157, 0.2)',
-                '--shadow-card': '0 8px 32px rgba(0, 0, 0, 0.1)'
-            }
-        };
-        
-        // Apply theme variables
-        const variables = themeVariables[theme];
-        if (variables) {
-            Object.entries(variables).forEach(([property, value]) => {
-                root.style.setProperty(property, value);
-            });
-        }
-    }
+
     
     hideLoadingScreen() {
         setTimeout(() => {
