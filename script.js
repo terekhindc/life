@@ -39,6 +39,38 @@ class GameOfLife {
         this.draw();
     }
     
+    // Convert HSL to Hex color
+    hslToHex(h, s, l) {
+        h /= 360;
+        s /= 100;
+        l /= 100;
+        
+        const c = (1 - Math.abs(2 * l - 1)) * s;
+        const x = c * (1 - Math.abs((h * 6) % 2 - 1));
+        const m = l - c / 2;
+        let r = 0, g = 0, b = 0;
+        
+        if (0 <= h && h < 1/6) {
+            r = c; g = x; b = 0;
+        } else if (1/6 <= h && h < 1/3) {
+            r = x; g = c; b = 0;
+        } else if (1/3 <= h && h < 1/2) {
+            r = 0; g = c; b = x;
+        } else if (1/2 <= h && h < 2/3) {
+            r = 0; g = x; b = c;
+        } else if (2/3 <= h && h < 5/6) {
+            r = x; g = 0; b = c;
+        } else if (5/6 <= h && h <= 1) {
+            r = c; g = 0; b = x;
+        }
+        
+        const rHex = Math.round((r + m) * 255).toString(16).padStart(2, '0');
+        const gHex = Math.round((g + m) * 255).toString(16).padStart(2, '0');
+        const bHex = Math.round((b + m) * 255).toString(16).padStart(2, '0');
+        
+        return `#${rHex}${gHex}${bHex}`;
+    }
+    
     loadTheme() {
         const savedTheme = localStorage.getItem('gameOfLifeTheme') || 'classic';
         this.setTheme(savedTheme);
@@ -61,9 +93,11 @@ class GameOfLife {
             document.body.classList.add('theme-architectural');
         } else if (theme === 'laboratory') {
             document.body.classList.add('theme-laboratory');
-        } else if (theme === '3d') {
-            document.body.classList.add('theme-3d');
-        }
+            } else if (theme === '3d') {
+        document.body.classList.add('theme-3d');
+    } else if (theme === 'watercolor') {
+        document.body.classList.add('theme-watercolor');
+    }
         
         // Update theme switcher
         document.querySelectorAll('.theme-option').forEach(option => {
@@ -104,6 +138,10 @@ class GameOfLife {
                 case '3d':
                     headerTitle.textContent = "CONWAY'S GAME OF LIFE";
                     editionText.textContent = '3D EDITION • NON-EUCLIDEAN SPACE SIMULATION';
+                    break;
+                case 'watercolor':
+                    headerTitle.textContent = "CONWAY'S GAME OF LIFE";
+                    editionText.textContent = 'WATERCOLOR EDITION • ARTISTIC PAINTING SIMULATION';
                     break;
             }
         }
@@ -392,19 +430,39 @@ class GameOfLife {
                 const neighbors = this.countNeighbors(i, j);
                 const current = this.grid[i][j];
                 
-                if (current === 1) {
-                    // Live cell
-                    if (neighbors < 2 || neighbors > 3) {
-                        this.nextGrid[i][j] = 0; // Dies
+                if (this.currentTheme === '3d') {
+                    // 3D rules: adapted for 26-neighbor simulation
+                    if (current === 1) {
+                        // Live cell in 3D space
+                        if (neighbors < 4 || neighbors > 8) {
+                            this.nextGrid[i][j] = 0; // Dies (more neighbors needed in 3D)
+                        } else {
+                            this.nextGrid[i][j] = 1; // Survives
+                        }
                     } else {
-                        this.nextGrid[i][j] = 1; // Survives
+                        // Dead cell in 3D space
+                        if (neighbors >= 5 && neighbors <= 7) {
+                            this.nextGrid[i][j] = 1; // Becomes alive (more neighbors needed)
+                        } else {
+                            this.nextGrid[i][j] = 0; // Stays dead
+                        }
                     }
                 } else {
-                    // Dead cell
-                    if (neighbors === 3) {
-                        this.nextGrid[i][j] = 1; // Becomes alive
+                    // Classic 2D rules
+                    if (current === 1) {
+                        // Live cell
+                        if (neighbors < 2 || neighbors > 3) {
+                            this.nextGrid[i][j] = 0; // Dies
+                        } else {
+                            this.nextGrid[i][j] = 1; // Survives
+                        }
                     } else {
-                        this.nextGrid[i][j] = 0; // Stays dead
+                        // Dead cell
+                        if (neighbors === 3) {
+                            this.nextGrid[i][j] = 1; // Becomes alive
+                        } else {
+                            this.nextGrid[i][j] = 0; // Stays dead
+                        }
                     }
                 }
             }
@@ -418,21 +476,37 @@ class GameOfLife {
     countNeighbors(row, col) {
         let count = 0;
         
-        for (let i = -1; i <= 1; i++) {
-            for (let j = -1; j <= 1; j++) {
-                if (i === 0 && j === 0) continue;
-                
-                const newRow = row + i;
-                const newCol = col + j;
-                
-                if (newRow >= 0 && newRow < this.gridSize && 
-                    newCol >= 0 && newCol < this.gridSize) {
+        if (this.currentTheme === '3d') {
+            // 3D rules: Extended neighborhood to simulate 26 neighbors
+            // Using weighted Moore neighborhood to approximate 3D behavior
+            for (let i = -2; i <= 2; i++) {
+                for (let j = -2; j <= 2; j++) {
+                    if (i === 0 && j === 0) continue;
+                    
+                    // Weight neighbors by distance (simulating 3D depth)
+                    const distance = Math.max(Math.abs(i), Math.abs(j));
+                    const weight = distance === 1 ? 1 : 0.3; // Direct neighbors have full weight
+                    
+                    const newRow = (row + i + this.gridSize) % this.gridSize;
+                    const newCol = (col + j + this.gridSize) % this.gridSize;
+                    count += this.grid[newRow][newCol] * weight;
+                }
+            }
+            // Round to simulate discrete 3D neighbor count
+            return Math.round(count);
+        } else {
+            // Classic 2D rules: 8 neighbors
+            for (let i = -1; i <= 1; i++) {
+                for (let j = -1; j <= 1; j++) {
+                    if (i === 0 && j === 0) continue;
+                    
+                    const newRow = (row + i + this.gridSize) % this.gridSize;
+                    const newCol = (col + j + this.gridSize) % this.gridSize;
                     count += this.grid[newRow][newCol];
                 }
             }
+            return count;
         }
-        
-        return count;
     }
     
     draw() {
@@ -461,6 +535,24 @@ class GameOfLife {
             this.ctx.lineWidth = 0.3;
             this.ctx.shadowColor = '#87ceeb';
             this.ctx.shadowBlur = 1;
+        } else if (this.currentTheme === 'laboratory') {
+            // Laboratory theme: Petri dish grid - very subtle lines
+            this.ctx.strokeStyle = 'rgba(74, 144, 226, 0.2)';
+            this.ctx.lineWidth = 0.2;
+            this.ctx.shadowColor = 'rgba(74, 144, 226, 0.1)';
+            this.ctx.shadowBlur = 0.5;
+        } else if (this.currentTheme === '3d') {
+            // 3D theme: wireframe grid with depth
+            this.ctx.strokeStyle = 'rgba(0, 255, 255, 0.4)';
+            this.ctx.lineWidth = 0.3;
+            this.ctx.shadowColor = '#00ffff';
+            this.ctx.shadowBlur = 1;
+        } else if (this.currentTheme === 'watercolor') {
+            // Watercolor theme: subtle paper grid
+            this.ctx.strokeStyle = 'rgba(255, 107, 157, 0.1)';
+            this.ctx.lineWidth = 0.2;
+            this.ctx.shadowColor = 'rgba(255, 107, 157, 0.05)';
+            this.ctx.shadowBlur = 0.5;
         } else {
             // Classic theme: simple black lines
             this.ctx.strokeStyle = '#000000';
@@ -586,6 +678,102 @@ class GameOfLife {
                             this.ctx.fillStyle = '#ffaa00';
                             this.ctx.fillRect(x + Math.random() * 2, y, 1, size);
                         }
+                    } else if (this.currentTheme === 'laboratory') {
+                        // Laboratory theme: microbial colonies with organic shapes
+                        const time = Date.now() * 0.001;
+                        const neighbors = this.countNeighbors(i, j);
+                        const generation = this.generation % 20; // Use generation for color variation
+                        
+                        // Determine microbial strain based on generation and neighbors
+                        let strainColor, strainGlow;
+                        if (generation < 5) {
+                            // Young colonies: bright blue-green
+                            strainColor = '#4a90e2';
+                            strainGlow = '#4a90e2';
+                        } else if (generation < 10) {
+                            // Middle-aged colonies: green
+                            strainColor = '#50c878';
+                            strainGlow = '#50c878';
+                        } else if (generation < 15) {
+                            // Mature colonies: orange-red
+                            strainColor = '#ff6b6b';
+                            strainGlow = '#ff6b6b';
+                        } else {
+                            // Old colonies: purple
+                            strainColor = '#9b59b6';
+                            strainGlow = '#9b59b6';
+                        }
+                        
+                        // Create organic, semi-transparent gradient for microbial appearance
+                        const cellGradient = this.ctx.createRadialGradient(
+                            x + size/2 + (Math.random() - 0.5) * 2, 
+                            y + size/2 + (Math.random() - 0.5) * 2, 0,
+                            x + size/2, y + size/2, size/2
+                        );
+                        cellGradient.addColorStop(0, strainColor + 'cc'); // Semi-transparent center
+                        cellGradient.addColorStop(0.6, strainColor + '99'); // More transparent middle
+                        cellGradient.addColorStop(1, strainColor + '66'); // Very transparent edge
+                        
+                        this.ctx.fillStyle = cellGradient;
+                        
+                        // Add subtle glow effect
+                        this.ctx.shadowColor = strainGlow;
+                        this.ctx.shadowBlur = 3;
+                        
+                        // Draw organic, irregular microbial shape
+                        this.ctx.beginPath();
+                        
+                        // Create amoeba-like shape with random variations
+                        const centerX = x + size/2;
+                        const centerY = y + size/2;
+                        const radius = size/2 * (0.8 + Math.random() * 0.4); // Variable size
+                        
+                        // Generate irregular polygon for organic appearance
+                        const numPoints = 6 + Math.floor(Math.random() * 4);
+                        for (let p = 0; p < numPoints; p++) {
+                            const angle = (p / numPoints) * 2 * Math.PI;
+                            const pointRadius = radius * (0.7 + Math.random() * 0.6);
+                            const pointX = centerX + Math.cos(angle) * pointRadius;
+                            const pointY = centerY + Math.sin(angle) * pointRadius;
+                            
+                            if (p === 0) {
+                                this.ctx.moveTo(pointX, pointY);
+                            } else {
+                                this.ctx.lineTo(pointX, pointY);
+                            }
+                        }
+                        this.ctx.closePath();
+                        this.ctx.fill();
+                        
+                        // Add division animation for reproducing cells
+                        if (neighbors === 2 || neighbors === 3) {
+                            const divisionPulse = 0.3 + 0.2 * Math.sin(time * 3 + i * 0.2 + j * 0.2);
+                            const alpha = Math.floor(divisionPulse * 255);
+                            this.ctx.fillStyle = strainColor + alpha.toString(16).padStart(2, '0');
+                            this.ctx.shadowBlur = 5 * divisionPulse;
+                            
+                            // Draw smaller division bud
+                            const budSize = size * 0.3 * divisionPulse;
+                            this.ctx.beginPath();
+                            this.ctx.arc(centerX + (Math.random() - 0.5) * 4, 
+                                       centerY + (Math.random() - 0.5) * 4, 
+                                       budSize, 0, 2 * Math.PI);
+                            this.ctx.fill();
+                        }
+                        
+                        this.ctx.shadowBlur = 0;
+                        
+                        // Add death animation for dying cells (overcrowding or isolation)
+                        if (neighbors < 2 || neighbors > 3) {
+                            const deathPulse = 0.1 + 0.1 * Math.sin(time * 5 + i * 0.3 + j * 0.3);
+                            this.ctx.fillStyle = 'rgba(139, 69, 19, ' + (0.3 * deathPulse) + ')'; // Brown death stain
+                            this.ctx.shadowBlur = 2;
+                            
+                            // Draw death stain
+                            this.ctx.beginPath();
+                            this.ctx.arc(centerX, centerY, size * 0.4 * deathPulse, 0, 2 * Math.PI);
+                            this.ctx.fill();
+                        }
                     } else if (this.currentTheme === 'architectural') {
                         // Architectural theme: technical drawing cells
                         const time = Date.now() * 0.001;
@@ -634,6 +822,226 @@ class GameOfLife {
                             this.ctx.lineTo(x + size/2, y + 2);
                             this.ctx.stroke();
                         }
+                    } else if (this.currentTheme === '3d') {
+                        // 3D theme: cubic cells with depth and lighting
+                        const time = Date.now() * 0.001;
+                        const neighbors = this.countNeighbors(i, j);
+                        const generation = this.generation % 15;
+                        
+                        // Determine 3D cell properties based on neighbors and generation
+                        let cubeColor, cubeGlow;
+                        if (generation < 5) {
+                            // Young 3D cells: bright cyan
+                            cubeColor = '#00ffff';
+                            cubeGlow = '#00ffff';
+                        } else if (generation < 10) {
+                            // Middle-aged 3D cells: magenta
+                            cubeColor = '#ff00ff';
+                            cubeGlow = '#ff00ff';
+                        } else {
+                            // Old 3D cells: yellow
+                            cubeColor = '#ffff00';
+                            cubeGlow = '#ffff00';
+                        }
+                        
+                        // Create 3D cube effect with perspective
+                        const centerX = x + size/2;
+                        const centerY = y + size/2;
+                        const cubeSize = size * 0.8;
+                        const depth = size * 0.3;
+                        
+                        // Calculate lighting based on position and time
+                        const lightAngle = Math.sin(time * 0.5 + i * 0.1 + j * 0.1);
+                        const brightness = 0.6 + 0.4 * lightAngle;
+                        
+                        // Draw 3D cube faces with different shading
+                        this.ctx.save();
+                        
+                        // Front face (brightest)
+                        this.ctx.fillStyle = cubeColor + Math.floor(brightness * 255).toString(16).padStart(2, '0');
+                        this.ctx.shadowColor = cubeGlow;
+                        this.ctx.shadowBlur = 5;
+                        this.ctx.fillRect(centerX - cubeSize/2, centerY - cubeSize/2, cubeSize, cubeSize);
+                        
+                        // Top face (darker)
+                        this.ctx.fillStyle = cubeColor + Math.floor(brightness * 0.7 * 255).toString(16).padStart(2, '0');
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(centerX - cubeSize/2, centerY - cubeSize/2);
+                        this.ctx.lineTo(centerX - cubeSize/2 + depth, centerY - cubeSize/2 - depth);
+                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY - cubeSize/2 - depth);
+                        this.ctx.lineTo(centerX + cubeSize/2, centerY - cubeSize/2);
+                        this.ctx.closePath();
+                        this.ctx.fill();
+                        
+                        // Right face (darkest)
+                        this.ctx.fillStyle = cubeColor + Math.floor(brightness * 0.5 * 255).toString(16).padStart(2, '0');
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(centerX + cubeSize/2, centerY - cubeSize/2);
+                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY - cubeSize/2 - depth);
+                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY + cubeSize/2 - depth);
+                        this.ctx.lineTo(centerX + cubeSize/2, centerY + cubeSize/2);
+                        this.ctx.closePath();
+                        this.ctx.fill();
+                        
+                        // Add wireframe edges for 3D effect
+                        this.ctx.strokeStyle = cubeGlow;
+                        this.ctx.lineWidth = 1;
+                        this.ctx.shadowBlur = 0;
+                        
+                        // Front face edges
+                        this.ctx.strokeRect(centerX - cubeSize/2, centerY - cubeSize/2, cubeSize, cubeSize);
+                        
+                        // 3D connection lines
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(centerX - cubeSize/2, centerY - cubeSize/2);
+                        this.ctx.lineTo(centerX - cubeSize/2 + depth, centerY - cubeSize/2 - depth);
+                        this.ctx.moveTo(centerX + cubeSize/2, centerY - cubeSize/2);
+                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY - cubeSize/2 - depth);
+                        this.ctx.moveTo(centerX + cubeSize/2, centerY + cubeSize/2);
+                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY + cubeSize/2 - depth);
+                        this.ctx.moveTo(centerX - cubeSize/2, centerY + cubeSize/2);
+                        this.ctx.lineTo(centerX - cubeSize/2 + depth, centerY + cubeSize/2 - depth);
+                        this.ctx.stroke();
+                        
+                        // Top face edges
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(centerX - cubeSize/2 + depth, centerY - cubeSize/2 - depth);
+                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY - cubeSize/2 - depth);
+                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY + cubeSize/2 - depth);
+                        this.ctx.lineTo(centerX - cubeSize/2 + depth, centerY + cubeSize/2 - depth);
+                        this.ctx.closePath();
+                        this.ctx.stroke();
+                        
+                        this.ctx.restore();
+                        
+                        // Add rotation animation for active cells
+                        if (neighbors === 2 || neighbors === 3) {
+                            const rotationPulse = 0.3 + 0.2 * Math.sin(time * 2 + i * 0.2 + j * 0.2);
+                            this.ctx.save();
+                            this.ctx.translate(centerX, centerY);
+                            this.ctx.rotate(rotationPulse * 0.1);
+                            this.ctx.fillStyle = cubeGlow + Math.floor(rotationPulse * 255).toString(16).padStart(2, '0');
+                            this.ctx.fillRect(-2, -2, 4, 4);
+                            this.ctx.restore();
+                        }
+                    } else if (this.currentTheme === 'watercolor') {
+                        // Watercolor theme: realistic brush strokes with blending
+                        const time = Date.now() * 0.001;
+                        const neighbors = this.countNeighbors(i, j);
+                        const age = this.generation % 15;
+                        
+                        // Each cell has its own unique watercolor color
+                        const colorSeed = (i * 1000 + j * 100 + this.generation) % 360;
+                        const hue = colorSeed;
+                        const saturation = 0.7 + (Math.random() * 0.3); // 0.7-1.0
+                        const lightness = 0.5 + (Math.random() * 0.3); // 0.5-0.8
+                        
+                        // Convert HSL to RGB for the base color
+                        const brushColor = this.hslToHex(hue, saturation * 100, lightness * 100);
+                        
+                        // Age affects saturation and brightness
+                        const ageFactor = Math.max(0.3, 1 - (age * 0.05)); // Older cells become less saturated
+                        const finalSaturation = saturation * ageFactor;
+                        const finalLightness = lightness * (0.8 + ageFactor * 0.2);
+                        const finalColor = this.hslToHex(hue, finalSaturation * 100, finalLightness * 100);
+                        
+                        // Create realistic brush stroke effect
+                        const centerX = x + size/2 + (Math.random() - 0.5) * 2;
+                        const centerY = y + size/2 + (Math.random() - 0.5) * 2;
+                        const brushSize = size * (0.6 + Math.random() * 0.8);
+                        
+                        // Calculate watercolor spread and blending
+                        const spreadIntensity = 0.4 + 0.3 * Math.sin(time * 1.5 + i * 0.1 + j * 0.1);
+                        const spreadRadius = brushSize * (1 + spreadIntensity * 0.8);
+                        
+                        this.ctx.save();
+                        
+                        // Create complex watercolor gradient with blending
+                        const gradient = this.ctx.createRadialGradient(
+                            centerX + (Math.random() - 0.5) * 4, 
+                            centerY + (Math.random() - 0.5) * 4, 0,
+                            centerX, centerY, spreadRadius
+                        );
+                        
+                        // Add color stops for realistic watercolor effect
+                        gradient.addColorStop(0, finalColor + 'ee'); // Bright center
+                        gradient.addColorStop(0.2, finalColor + 'cc'); // Semi-transparent
+                        gradient.addColorStop(0.5, finalColor + '88'); // More transparent
+                        gradient.addColorStop(0.8, finalColor + '44'); // Very transparent
+                        gradient.addColorStop(1, finalColor + '11'); // Almost invisible edge
+                        
+                        this.ctx.fillStyle = gradient;
+                        
+                        // Create irregular brush stroke shape (like real watercolor)
+                        this.ctx.beginPath();
+                        const numPoints = 10 + Math.floor(Math.random() * 8);
+                        for (let p = 0; p < numPoints; p++) {
+                            const angle = (p / numPoints) * 2 * Math.PI;
+                            const pointRadius = spreadRadius * (0.5 + Math.random() * 0.8);
+                            const pointX = centerX + Math.cos(angle) * pointRadius;
+                            const pointY = centerY + Math.sin(angle) * pointRadius;
+                            
+                            if (p === 0) {
+                                this.ctx.moveTo(pointX, pointY);
+                            } else {
+                                this.ctx.lineTo(pointX, pointY);
+                            }
+                        }
+                        this.ctx.closePath();
+                        this.ctx.fill();
+                        
+                        // Add brush stroke texture and direction
+                        this.ctx.strokeStyle = finalColor + '99';
+                        this.ctx.lineWidth = 0.8;
+                        this.ctx.lineCap = 'round';
+                        this.ctx.lineJoin = 'round';
+                        
+                        // Draw multiple brush strokes for texture
+                        for (let stroke = 0; stroke < 4; stroke++) {
+                            const strokeLength = brushSize * (0.4 + Math.random() * 0.6);
+                            const strokeAngle = Math.random() * Math.PI * 2;
+                            const startX = centerX + Math.cos(strokeAngle) * strokeLength * 0.2;
+                            const startY = centerY + Math.sin(strokeAngle) * strokeLength * 0.2;
+                            const endX = centerX + Math.cos(strokeAngle) * strokeLength;
+                            const endY = centerY + Math.sin(strokeAngle) * strokeLength;
+                            
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(startX, startY);
+                            this.ctx.lineTo(endX, endY);
+                            this.ctx.stroke();
+                        }
+                        
+                        this.ctx.restore();
+                        
+                        // Add color blending for neighboring cells
+                        if (neighbors >= 2 && neighbors <= 3) {
+                            const blendPulse = 0.3 + 0.2 * Math.sin(time * 2 + i * 0.15 + j * 0.15);
+                            this.ctx.fillStyle = finalColor + Math.floor(blendPulse * 255).toString(16).padStart(2, '0');
+                            this.ctx.beginPath();
+                            this.ctx.arc(centerX + (Math.random() - 0.5) * 8, 
+                                       centerY + (Math.random() - 0.5) * 8, 
+                                       size * 0.15 * blendPulse, 0, 2 * Math.PI);
+                            this.ctx.fill();
+                        }
+                        
+                        // Add drying effect for dying cells (creates history)
+                        if (neighbors < 2 || neighbors > 3) {
+                            const dryPulse = 0.1 + 0.1 * Math.sin(time * 4 + i * 0.2 + j * 0.2);
+                            // Create dried paint effect with brown color
+                            this.ctx.fillStyle = 'rgba(139, 69, 19, ' + (0.15 * dryPulse) + ')';
+                            this.ctx.beginPath();
+                            this.ctx.arc(centerX, centerY, size * 0.25 * dryPulse, 0, 2 * Math.PI);
+                            this.ctx.fill();
+                            
+                            // Add faded outline for dried paint
+                            this.ctx.strokeStyle = 'rgba(139, 69, 19, ' + (0.1 * dryPulse) + ')';
+                            this.ctx.lineWidth = 0.5;
+                            this.ctx.beginPath();
+                            this.ctx.arc(centerX, centerY, size * 0.3 * dryPulse, 0, 2 * Math.PI);
+                            this.ctx.stroke();
+                        }
+                        
+
                     } else {
                         // Classic theme: simple black cells
                         this.ctx.fillStyle = '#000000';
