@@ -156,23 +156,6 @@
     --watercolor-paper-texture: repeating-radial-gradient(circle at 20% 20%, transparent 0, transparent 40px, rgba(0, 0, 0, 0.02) 40px, rgba(0, 0, 0, 0.02) 41px);
     --watercolor-paper-color: #fafafa;
     --watercolor-brush-stroke: rgba(142, 68, 173, 0.8);
-
-    /* Default to Classic Theme */
-    --primary-bg: var(--classic-primary-bg);
-    --secondary-bg: var(--classic-secondary-bg);
-    --accent-color: var(--classic-accent-color);
-    --accent-glow: var(--classic-accent-glow);
-    --success-color: var(--classic-success-color);
-    --warning-color: var(--classic-warning-color);
-    --danger-color: var(--classic-danger-color);
-    --text-primary: var(--classic-text-primary);
-    --text-secondary: var(--classic-text-secondary);
-    --border-color: var(--classic-border-color);
-    --card-bg: var(--classic-card-bg);
-    --glass-bg: var(--classic-glass-bg);
-    --shadow-glow: var(--classic-shadow-glow);
-    --shadow-card: var(--classic-shadow-card);
-    --gradient: var(--classic-gradient);
 }
 
 /* Laboratory Theme */
@@ -201,7 +184,6 @@ body.theme-retro {
 
 /* Classic Theme */
 body.theme-classic {
-    --gradient: var(--classic-gradient);
     font-family: 'Courier New', monospace;
 }
 
@@ -459,40 +441,12 @@ body.theme-classic ::-webkit-scrollbar-thumb:hover {
 
 /* Cyber Theme */
 body.theme-cyber {
-    --primary-bg: var(--cyber-primary-bg);
-    --secondary-bg: var(--cyber-secondary-bg);
-    --accent-color: var(--cyber-accent-color);
-    --accent-glow: var(--cyber-accent-glow);
-    --success-color: var(--cyber-success-color);
-    --warning-color: var(--cyber-warning-color);
-    --danger-color: var(--cyber-danger-color);
-    --text-primary: var(--cyber-text-primary);
-    --text-secondary: var(--cyber-text-secondary);
-    --border-color: var(--cyber-border-color);
-    --card-bg: var(--cyber-card-bg);
-    --glass-bg: var(--cyber-glass-bg);
-    --shadow-glow: var(--cyber-shadow-glow);
-    --shadow-card: var(--cyber-shadow-card);
-    --gradient: var(--cyber-gradient);
+    font-family: 'Rajdhani', sans-serif;
 }
 
 /* Bioluminescent Theme */
 body.theme-bioluminescent {
-    --primary-bg: var(--bioluminescent-primary-bg);
-    --secondary-bg: var(--bioluminescent-secondary-bg);
-    --accent-color: var(--bioluminescent-accent-color);
-    --accent-glow: var(--bioluminescent-accent-glow);
-    --success-color: var(--bioluminescent-success-color);
-    --warning-color: var(--bioluminescent-warning-color);
-    --danger-color: var(--bioluminescent-danger-color);
-    --text-primary: var(--bioluminescent-text-primary);
-    --text-secondary: var(--bioluminescent-text-secondary);
-    --border-color: var(--bioluminescent-border-color);
-    --card-bg: var(--bioluminescent-card-bg);
-    --glass-bg: var(--bioluminescent-glass-bg);
-    --shadow-glow: var(--bioluminescent-shadow-glow);
-    --shadow-card: var(--bioluminescent-shadow-card);
-    --gradient: var(--bioluminescent-gradient);
+    font-family: 'Rajdhani', sans-serif;
 }
 
 body {
@@ -505,13 +459,7 @@ body {
     transition: all 0.5s ease;
 }
 
-body.theme-cyber {
-    font-family: 'Rajdhani', sans-serif;
-}
 
-body.theme-bioluminescent {
-    font-family: 'Rajdhani', sans-serif;
-}
 
 body::before {
     content: '';
