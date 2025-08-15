@@ -1050,6 +1050,32 @@ body.theme-classic .theme-option span {
     .theme-preview::after {
         font-size: 6px !important;
     }
+    
+    /* Mobile developer footer */
+    .developer-footer {
+        padding: 6px 0;
+        font-size: 10px;
+    }
+    
+    .developer-info {
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .developer-name {
+        order: 1;
+        width: 100%;
+        margin-bottom: 2px;
+    }
+    
+    .developer-website {
+        order: 2;
+    }
+    
+    .developer-phone {
+        order: 3;
+    }
 }
 
 /* Animated background particles */
@@ -2940,6 +2966,115 @@ body.theme-architectural .instructions li:hover {
 body.theme-bioluminescent .instructions li:before {
     content: "▶";
     animation: pulse 2s infinite;
+}
+
+/* Developer Footer */
+.developer-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 0;
+    z-index: 1000;
+    font-size: 11px;
+    text-align: center;
+}
+
+.developer-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Courier New', monospace;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.developer-name {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.developer-website {
+    color: var(--accent-color, #ff006e);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.developer-website:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.developer-phone {
+    font-family: 'Courier New', monospace;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Theme-specific developer footer styles */
+body.theme-cyber .developer-footer {
+    background: rgba(0, 0, 0, 0.9);
+    border-top: 1px solid var(--accent-color);
+}
+
+body.theme-cyber .developer-website {
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--accent-color);
+}
+
+body.theme-bioluminescent .developer-footer {
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 1px solid var(--accent-color);
+}
+
+body.theme-bioluminescent .developer-website {
+    color: var(--accent-color);
+}
+
+body.theme-retro .developer-footer {
+    background: rgba(0, 0, 0, 0.9);
+    border-top: 1px solid #00ff00;
+}
+
+body.theme-retro .developer-website {
+    color: #00ff00;
+    text-shadow: 0 0 3px #00ff00;
+}
+
+body.theme-architectural .developer-footer {
+    background: rgba(26, 58, 95, 0.9);
+    border-top: 1px solid var(--accent-color);
+}
+
+body.theme-laboratory .developer-footer {
+    background: rgba(10, 20, 30, 0.9);
+    border-top: 1px solid var(--accent-color);
+}
+
+body.theme-watercolor .developer-footer {
+    background: rgba(248, 244, 230, 0.9);
+    border-top: 1px solid var(--accent-color);
+    color: var(--text-primary);
+}
+
+body.theme-watercolor .developer-info {
+    color: var(--text-secondary);
+}
+
+body.theme-watercolor .developer-name {
+    color: var(--text-primary);
+}
+
+body.theme-watercolor .developer-phone {
+    color: var(--text-secondary);
 }
 
 /* Responsive Design */
