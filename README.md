@@ -1,167 +1,167 @@
 # Conway's Game of Life - Multi-Theme Edition
 
-Интерактивная веб-версия классической игры "Жизнь" Джона Конвея с множественными визуальными темами и современным UI/UX дизайном.
+Interactive web version of John Conway's classic "Game of Life" with multiple visual themes and modern UI/UX design.
 
-## 🎮 Особенности
+## 🎮 Features
 
-### Основной функционал
-- **Классические правила игры**: Реализация оригинальных правил Conway's Game of Life
-- **Интерактивное управление**: Клик для создания/удаления клеток, перетаскивание для рисования паттернов
-- **Настраиваемая скорость**: Регулировка скорости симуляции от 1 до 20
-- **Различные размеры сетки**: 30×30, 50×50, 75×75, 100×100
-- **Клавиатурные сокращения**: Space (старт/пауза), Ctrl+R (сброс), Ctrl+C (очистка), Ctrl+T (смена темы)
+### Core Functionality
+- **Classic Game Rules**: Implementation of original Conway's Game of Life rules
+- **Interactive Controls**: Click to create/delete cells, drag to draw patterns
+- **Adjustable Speed**: Simulation speed control from 1 to 20
+- **Various Grid Sizes**: 30×30, 50×50, 75×75, 100×100
+- **Keyboard Shortcuts**: Space (start/pause), Ctrl+R (reset), Ctrl+C (clear), Ctrl+T (theme switch)
 
-### Визуальные темы
-1. **Classic** - Минималистичный дизайн в стиле первых игр
-2. **Cyber** - Киберпанк стиль с неоновыми цветами и глитч-эффектами
-3. **Bioluminescent** - Глубоководная тема с биолюминесцентными эффектами
-4. **Retro** - Ретро-футуристический монитор с CRT эффектами
-5. **Architectural** - Технический чертеж с архитектурными элементами
-6. **Laboratory** - Лаборатория под микроскопом с микробными колониями
-7. **3D Life** - Трехмерная жизнь в неевклидовых пространствах
+### Visual Themes
+1. **Classic** - Minimalist design in the style of early games
+2. **Cyber** - Cyberpunk style with neon colors and glitch effects
+3. **Bioluminescent** - Deep sea theme with bioluminescent effects
+4. **Retro** - Retro-futuristic monitor with CRT effects
+5. **Architectural** - Technical blueprint with architectural elements
+6. **Laboratory** - Laboratory under microscope with microbial colonies
+7. **3D Life** - Three-dimensional life in non-Euclidean spaces
 
-### Технические особенности
-- **HTML5 Canvas**: Высокопроизводительная отрисовка
-- **CSS3 Анимации**: Плавные переходы и эффекты
-- **JavaScript ES6+**: Современный код с классами
-- **Responsive Design**: Адаптация под различные экраны
-- **LocalStorage**: Сохранение выбранной темы
+### Technical Features
+- **HTML5 Canvas**: High-performance rendering
+- **CSS3 Animations**: Smooth transitions and effects
+- **JavaScript ES6+**: Modern code with classes
+- **Responsive Design**: Adaptation to various screens
+- **LocalStorage**: Theme selection persistence
 
-## 🚀 Запуск
+## 🚀 Getting Started
 
-1. Клонируйте репозиторий:
+1. Clone the repository:
 ```bash
-git clone https://github.com/TerekhinAndrei/life.git
+git clone https://github.com/terekhindc/life.git
 cd life
 ```
 
-2. Откройте `index.html` в браузере или запустите локальный сервер:
+2. Open `index.html` in a browser or run a local server:
 ```bash
 python3 -m http.server 8000
 ```
 
-3. Откройте http://localhost:8000 в браузере
+3. Open http://localhost:8000 in your browser
 
-## 🎨 Темы
+## 🎨 Themes
 
 ### Classic Edition
-- Простой черно-белый дизайн
-- Шрифт Courier New
-- Минималистичные элементы интерфейса
+- Simple black and white design
+- Courier New font
+- Minimalist interface elements
 
 ### Cyber Edition
-- Неоновые цвета (#ff006e, #00d4ff, #ffd700)
-- Глитч-эффекты и RGB сдвиги
-- Шрифт Orbitron
-- Анимированные частицы
+- Neon colors (#ff006e, #00d4ff, #ffd700)
+- Glitch effects and RGB shifts
+- Orbitron font
+- Animated particles
 
 ### Bioluminescent Edition
-- Глубоководные цвета (#00ffff, #00ff88)
-- Пульсирующие эффекты
-- Органические анимации
-- Градиентные переходы
+- Deep sea colors (#00ffff, #00ff88)
+- Pulsing effects
+- Organic animations
+- Gradient transitions
 
 ### Retro Edition
-- CRT монитор стиль
-- Зеленый/янтарный цвета
-- Эффект сканирующих линий
-- Фосфорные анимации
+- CRT monitor style
+- Green/amber colors
+- Scanning line effects
+- Phosphor animations
 
 ### Architectural Edition
-- Технический чертеж
-- Белые линии на синем фоне
-- Миллиметровая сетка
-- Анимации рисования
+- Technical blueprint
+- White lines on blue background
+- Millimeter grid
+- Drawing animations
 
 ### Laboratory Edition
-- Чашка Петри стиль
-- Микробные колонии
-- Агаровая питательная среда
-- Органические формы клеток
+- Petri dish style
+- Microbial colonies
+- Agar nutrient medium
+- Organic cell shapes
 
 ### 3D Life Edition
-- Неевклидовы пространства
-- Трехмерные кубы
-- Неоновые эффекты
-- Футуристический дизайн
+- Non-Euclidean spaces
+- Three-dimensional cubes
+- Neon effects
+- Futuristic design
 
-## 🎯 Управление
+## 🎯 Controls
 
-### Мышь
-- **Клик**: Создать/удалить клетку
-- **Перетаскивание**: Рисовать паттерны
-- **Клик по кнопкам**: Управление игрой
+### Mouse
+- **Click**: Create/delete cell
+- **Drag**: Draw patterns
+- **Click buttons**: Game control
 
-### Клавиатура
-- **Space**: Старт/пауза
-- **Ctrl+R**: Сброс игры
-- **Ctrl+C**: Очистить поле
-- **Ctrl+T**: Следующая тема
+### Keyboard
+- **Space**: Start/pause
+- **Ctrl+R**: Reset game
+- **Ctrl+C**: Clear field
+- **Ctrl+T**: Next theme
 
-### Интерфейс
-- **START**: Запустить симуляцию
-- **PAUSE**: Приостановить
-- **RESET**: Сбросить к начальному состоянию
-- **CLEAR**: Очистить поле
-- **SPEED**: Настройка скорости (1-20)
-- **GRID SIZE**: Размер сетки
+### Interface
+- **START**: Launch simulation
+- **PAUSE**: Pause
+- **RESET**: Reset to initial state
+- **CLEAR**: Clear field
+- **SPEED**: Speed adjustment (1-20)
+- **GRID SIZE**: Grid size
 
-## 📊 Статистика
-- **GENERATION**: Текущее поколение
-- **LIVE CELLS**: Количество живых клеток
+## 📊 Statistics
+- **GENERATION**: Current generation
+- **LIVE CELLS**: Number of live cells
 
-## 🛠 Технологии
+## 🛠 Technologies
 
-- **HTML5**: Структура и Canvas API
-- **CSS3**: Стили, анимации, переменные
-- **JavaScript ES6+**: Логика игры и интерактивность
+- **HTML5**: Structure and Canvas API
+- **CSS3**: Styles, animations, variables
+- **JavaScript ES6+**: Game logic and interactivity
 - **Web APIs**: LocalStorage, Canvas, Events
 
-## 📁 Структура проекта
+## 📁 Project Structure
 
 ```
 life/
-├── index.html          # Основная HTML страница
-├── styles.css          # Все стили и темы
-├── script.js           # Логика игры
-└── README.md           # Документация
+├── index.html          # Main HTML page
+├── styles.css          # All styles and themes
+├── script.js           # Game logic
+└── README.md           # Documentation
 ```
 
-## 🎨 Кастомизация
+## 🎨 Customization
 
-### Добавление новой темы
-1. Добавьте CSS переменные в `:root`
-2. Создайте класс `body.theme-[name]`
-3. Добавьте стили для элементов интерфейса
-4. Обновите JavaScript для переключения
-5. Добавьте превью иконку
+### Adding a New Theme
+1. Add CSS variables to `:root`
+2. Create `body.theme-[name]` class
+3. Add styles for interface elements
+4. Update JavaScript for switching
+5. Add preview icon
 
-### Изменение правил игры
-Модифицируйте метод `updateGrid()` в классе `GameOfLife`
+### Modifying Game Rules
+Modify the `updateGrid()` method in the `GameOfLife` class
 
-## 🤝 Вклад в проект
+## 🤝 Contributing
 
-1. Форкните репозиторий
-2. Создайте ветку для новой функции
-3. Внесите изменения
-4. Создайте Pull Request
+1. Fork the repository
+2. Create a branch for your feature
+3. Make your changes
+4. Create a Pull Request
 
-## 📄 Лицензия
+## 📄 License
 
-MIT License - см. файл LICENSE для деталей
+MIT License - see LICENSE file for details
 
-## 👨‍💻 Автор
+## 👨‍💻 Author
 
 **Andrei Terekhin**
-- GitHub: [@TerekhinAndrei](https://github.com/TerekhinAndrei)
-- Проект: [Conway's Game of Life](https://github.com/TerekhinAndrei/life)
+- GitHub: [@terekhindc](https://github.com/terekhindc)
+- Project: [Conway's Game of Life](https://github.com/terekhindc/life)
 
-## 🙏 Благодарности
+## 🙏 Acknowledgments
 
-- Джон Конвей за создание оригинальной игры
-- Сообщество разработчиков за вдохновение
-- Все, кто тестировал и давал обратную связь
+- John Conway for creating the original game
+- Developer community for inspiration
+- Everyone who tested and provided feedback
 
 ---
 
-**Наслаждайтесь изучением клеточных автоматов! 🧬✨**
+**Enjoy exploring cellular automata! 🧬✨**
