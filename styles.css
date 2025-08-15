@@ -1623,6 +1623,11 @@ body.theme-watercolor header p {
     display: block !important;
 }
 
+body.theme-watercolor header p.game-description-text {
+    margin-top: 50px !important;
+    margin-bottom: 30px !important;
+}
+
 body.theme-3d header p {
     font-family: 'Orbitron', monospace;
     font-size: 1.3rem;
@@ -2240,7 +2245,7 @@ body.theme-watercolor .game-description-text {
     font-family: 'Georgia', serif;
     color: var(--text-secondary);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
+    margin-top: 50px !important;
 }
 
 .game-info {
