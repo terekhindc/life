@@ -3077,6 +3077,38 @@ body.theme-watercolor .developer-phone {
     color: var(--text-secondary);
 }
 
+/* Classic theme developer footer styles */
+body.theme-classic .developer-footer {
+    background: rgba(0, 0, 0, 0.9);
+    border-top: 1px solid #333;
+    color: #fff;
+}
+
+body.theme-classic .developer-info {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.theme-classic .developer-name {
+    color: #fff;
+    font-weight: 700;
+}
+
+body.theme-classic .developer-website {
+    color: #007acc;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #007acc;
+}
+
+body.theme-classic .developer-website:hover {
+    color: #fff;
+    background: #007acc;
+    border-color: #fff;
+}
+
+body.theme-classic .developer-phone {
+    color: rgba(255, 255, 255, 0.9);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
