@@ -111,36 +111,9 @@ class GameOfLife {
         const headerTitle = document.getElementById('gameTitle');
         
         if (editionText && headerTitle) {
-            switch (theme) {
-                case 'classic':
-                    headerTitle.textContent = "CONWAY'S GAME OF LIFE";
-                    editionText.textContent = 'CLASSIC EDITION • CELLULAR AUTOMATA SIMULATION';
-                    break;
-                case 'cyber':
-                    headerTitle.textContent = "CONWAY'S GAME OF LIFE";
-                    editionText.textContent = 'CYBER EDITION • NEURAL NETWORK SIMULATION';
-                    break;
-                case 'bioluminescent':
-                    headerTitle.textContent = "CONWAY'S GAME OF LIFE";
-                    editionText.textContent = 'BIOLUMINESCENT EDITION • ORGANIC LIFE SIMULATION';
-                    break;
-                case 'retro':
-                    headerTitle.textContent = "CONWAY'S GAME OF LIFE";
-                    editionText.textContent = 'RETRO EDITION • CRT TERMINAL SIMULATION';
-                    break;
-                case 'architectural':
-                    headerTitle.textContent = "CONWAY'S GAME OF LIFE";
-                    editionText.textContent = 'ARCHITECTURAL EDITION • TECHNICAL DRAWING SIMULATION';
-                    break;
-                case 'laboratory':
-                    headerTitle.textContent = "CONWAY'S GAME OF LIFE";
-                    editionText.textContent = 'LABORATORY EDITION • MICROBIAL COLONY SIMULATION';
-                    break;
-                case 'watercolor':
-                    headerTitle.textContent = "CONWAY'S GAME OF LIFE";
-                    editionText.textContent = 'WATERCOLOR EDITION • ARTISTIC PAINTING SIMULATION';
-                    break;
-            }
+            const themeInfo = this.themeService.getThemeInfo(theme);
+            headerTitle.textContent = "CONWAY'S GAME OF LIFE";
+            editionText.textContent = `${themeInfo.name} • ${themeInfo.subtitle}`;
         }
         
         // Add data-text attribute for cyber glitch effect
