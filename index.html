@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conway's Game of Life - Cyber Edition</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loadingScreen">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <header>
+            <h1 id="gameTitle">CONWAY'S GAME OF LIFE</h1>
+            <p id="editionText">CLASSIC EDITION • CELLULAR AUTOMATA SIMULATION</p>
+        </header>
+        
+        <!-- Theme Switcher -->
+        <div class="theme-switcher">
+            <div class="theme-option active" data-theme="classic">
+                <div class="theme-preview classic-preview"></div>
+                <span>Classic</span>
+            </div>
+            <div class="theme-option" data-theme="cyber">
+                <div class="theme-preview cyber-preview"></div>
+                <span>Cyber</span>
+            </div>
+            <div class="theme-option" data-theme="bioluminescent">
+                <div class="theme-preview bioluminescent-preview"></div>
+                <span>Bioluminescent</span>
+            </div>
+            <div class="theme-option" data-theme="retro">
+                <div class="theme-preview retro-preview"></div>
+                <span>Retro</span>
+            </div>
+            <div class="theme-option" data-theme="architectural">
+                <div class="theme-preview architectural-preview"></div>
+                <span>Architectural</span>
+            </div>
+            <div class="theme-option" data-theme="laboratory">
+                <div class="theme-preview laboratory-preview"></div>
+                <span>Laboratory</span>
+            </div>
+            <div class="theme-option" data-theme="3d">
+                <div class="theme-preview theme-3d-preview"></div>
+                <span>3D Life</span>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <button id="startBtn" class="btn btn-primary">
+                    <span>▶ START</span>
+                </button>
+                <button id="pauseBtn" class="btn btn-secondary" disabled>
+                    <span>⏸ PAUSE</span>
+                </button>
+                <button id="resetBtn" class="btn btn-secondary">
+                    <span>🔄 RESET</span>
+                </button>
+                <button id="clearBtn" class="btn btn-secondary">
+                    <span>🗑 CLEAR</span>
+                </button>
+            </div>
+            
+            <div class="control-group">
+                <label for="speedSlider">SPEED:</label>
+                <input type="range" id="speedSlider" min="1" max="20" value="10">
+                <span id="speedValue">10</span>
+            </div>
+            
+            <div class="control-group">
+                <label for="gridSize">GRID SIZE:</label>
+                <select id="gridSize">
+                    <option value="30">30×30</option>
+                    <option value="50" selected>50×50</option>
+                    <option value="75">75×75</option>
+                    <option value="100">100×100</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="game-info">
+            <div class="info-item">
+                <span class="label">GENERATION</span>
+                <span id="generationCount">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">LIVE CELLS</span>
+                <span id="liveCellsCount">0</span>
+            </div>
+        </div>
+        
+        <div class="game-container">
+            <canvas id="gameCanvas" title="Click to toggle cells • Drag to draw patterns"></canvas>
+        </div>
+        
+        <div class="patterns">
+            <h3>PRESET PATTERNS</h3>
+            <div class="pattern-buttons">
+                <button class="pattern-btn" data-pattern="glider">
+                    <span>🚀 GLIDER</span>
+                </button>
+                <button class="pattern-btn" data-pattern="blinker">
+                    <span>💫 BLINKER</span>
+                </button>
+                <button class="pattern-btn" data-pattern="toad">
+                    <span>🐸 TOAD</span>
+                </button>
+                <button class="pattern-btn" data-pattern="beacon">
+                    <span>🔦 BEACON</span>
+                </button>
+                <button class="pattern-btn" data-pattern="pulsar">
+                    <span>⭐ PULSAR</span>
+                </button>
+                <button class="pattern-btn" data-pattern="gosper">
+                    <span>🔫 GOSPER GUN</span>
+                </button>
+                <button class="pattern-btn" data-pattern="random">
+                    <span>🎲 RANDOM</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>HOW TO PLAY</h3>
+            <ul>
+                <li>Click on cells to toggle them alive/dead</li>
+                <li>Use preset patterns to see interesting behaviors</li>
+                <li>Adjust speed to control simulation rate</li>
+                <li>Watch how patterns evolve over generations!</li>
+                <li>Experiment with your own creations</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>© 2024 Conway's Game of Life - Cyber Edition • Built with ❤️ and JavaScript</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
