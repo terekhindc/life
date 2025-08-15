@@ -3292,6 +3292,279 @@ body.theme-laboratory .controls-help h4::after {
     background: linear-gradient(90deg, #50c878, #4a90e2);
 }
 
+/* Architectural theme specific controls styling */
+body.theme-architectural .controls-help ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+body.theme-architectural .controls-help li {
+    background: rgba(135, 206, 235, 0.05);
+    border: 1px solid rgba(135, 206, 235, 0.2);
+    border-radius: 8px;
+    padding: 12px 15px;
+    padding-left: 40px;
+    color: var(--architectural-text-secondary);
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    position: relative;
+    font-family: 'Courier New', monospace;
+}
+
+body.theme-architectural .controls-help li:hover {
+    background: rgba(135, 206, 235, 0.1);
+    border-color: #87ceeb;
+    color: var(--architectural-text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(135, 206, 235, 0.2);
+}
+
+body.theme-architectural .controls-help li::before {
+    content: "▶";
+    color: #87ceeb;
+    font-size: 0.8rem;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+body.theme-architectural .controls-help li:hover::before {
+    color: #4682b4;
+    transform: translateY(-50%) scale(1.2);
+}
+
+body.theme-architectural .controls-help h4 {
+    color: #87ceeb;
+    text-shadow: 0 0 8px rgba(135, 206, 235, 0.5);
+    font-family: 'Courier New', monospace;
+}
+
+body.theme-architectural .controls-help h4::after {
+    background: linear-gradient(90deg, #4682b4, #87ceeb);
+}
+
+/* Bioluminescent theme specific controls styling */
+body.theme-bioluminescent .controls-help ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+body.theme-bioluminescent .controls-help li {
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 12px 15px;
+    padding-left: 40px;
+    color: var(--bioluminescent-text-secondary);
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    position: relative;
+}
+
+body.theme-bioluminescent .controls-help li:hover {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: #00ffff;
+    color: var(--bioluminescent-text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+}
+
+body.theme-bioluminescent .controls-help li::before {
+    content: "▶";
+    color: #00ffff;
+    font-size: 0.8rem;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+body.theme-bioluminescent .controls-help li:hover::before {
+    color: #00ff88;
+    transform: translateY(-50%) scale(1.2);
+}
+
+body.theme-bioluminescent .controls-help h4 {
+    color: #00ffff;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+body.theme-bioluminescent .controls-help h4::after {
+    background: linear-gradient(90deg, #00ff88, #00ffff);
+}
+
+/* Retro theme specific controls styling */
+body.theme-retro .controls-help ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+body.theme-retro .controls-help li {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 8px;
+    padding: 12px 15px;
+    padding-left: 40px;
+    color: var(--retro-text-secondary);
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    position: relative;
+    font-family: 'Courier New', monospace;
+}
+
+body.theme-retro .controls-help li:hover {
+    background: rgba(0, 255, 0, 0.1);
+    border-color: #00ff00;
+    color: var(--retro-text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2);
+}
+
+body.theme-retro .controls-help li::before {
+    content: "▶";
+    color: #00ff00;
+    font-size: 0.8rem;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+body.theme-retro .controls-help li:hover::before {
+    color: #ffaa00;
+    transform: translateY(-50%) scale(1.2);
+}
+
+body.theme-retro .controls-help h4 {
+    color: #00ff00;
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+    font-family: 'Courier New', monospace;
+}
+
+body.theme-retro .controls-help h4::after {
+    background: linear-gradient(90deg, #ffaa00, #00ff00);
+}
+
+/* Watercolor theme specific controls styling */
+body.theme-watercolor .controls-help ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+body.theme-watercolor .controls-help li {
+    background: rgba(255, 107, 157, 0.05);
+    border: 1px solid rgba(255, 107, 157, 0.2);
+    border-radius: 8px;
+    padding: 12px 15px;
+    padding-left: 40px;
+    color: var(--watercolor-text-secondary);
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    position: relative;
+    font-family: 'Georgia', serif;
+}
+
+body.theme-watercolor .controls-help li:hover {
+    background: rgba(255, 107, 157, 0.1);
+    border-color: #ff6b9d;
+    color: var(--watercolor-text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 157, 0.2);
+}
+
+body.theme-watercolor .controls-help li::before {
+    content: "▶";
+    color: #ff6b9d;
+    font-size: 0.8rem;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+body.theme-watercolor .controls-help li:hover::before {
+    color: #ff8fab;
+    transform: translateY(-50%) scale(1.2);
+}
+
+body.theme-watercolor .controls-help h4 {
+    color: #ff6b9d;
+    text-shadow: 0 0 8px rgba(255, 107, 157, 0.5);
+    font-family: 'Georgia', serif;
+}
+
+body.theme-watercolor .controls-help h4::after {
+    background: linear-gradient(90deg, #ff8fab, #ff6b9d);
+}
+
+/* Cyber theme specific controls styling */
+body.theme-cyber .controls-help ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+body.theme-cyber .controls-help li {
+    background: rgba(255, 0, 110, 0.05);
+    border: 1px solid rgba(255, 0, 110, 0.2);
+    border-radius: 8px;
+    padding: 12px 15px;
+    padding-left: 40px;
+    color: var(--cyber-text-secondary);
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    position: relative;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+body.theme-cyber .controls-help li:hover {
+    background: rgba(255, 0, 110, 0.1);
+    border-color: #ff006e;
+    color: var(--cyber-text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 0, 110, 0.2);
+}
+
+body.theme-cyber .controls-help li::before {
+    content: "▶";
+    color: #ff006e;
+    font-size: 0.8rem;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+body.theme-cyber .controls-help li:hover::before {
+    color: #00d4ff;
+    transform: translateY(-50%) scale(1.2);
+}
+
+body.theme-cyber .controls-help h4 {
+    color: #ff006e;
+    text-shadow: 0 0 8px rgba(255, 0, 110, 0.5);
+    font-family: 'Rajdhani', sans-serif;
+}
+
+body.theme-cyber .controls-help h4::after {
+    background: linear-gradient(90deg, #00d4ff, #ff006e);
+}
+
 body.theme-watercolor .rule-item {
     background: rgba(255, 107, 157, 0.1);
     border-color: rgba(255, 107, 157, 0.3);
