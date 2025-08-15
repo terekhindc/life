@@ -9,6 +9,8 @@ class GameOfLife {
         this.speed = 10;
         this.animationId = null;
         this.currentTheme = 'classic';
+        this.gameOverShown = false;
+        this.gameStartTime = Date.now();
         
         this.grid = [];
         this.nextGrid = [];
@@ -929,6 +931,11 @@ class GameOfLife {
         }
         liveCellsElement.textContent = liveCells;
         
+        // Check for Game Over
+        if (liveCells === 0 && this.isRunning && !this.gameOverShown) {
+            this.showGameOver();
+        }
+        
         // Add pulse effect when numbers change
         if (this.generation % 10 === 0) {
             this.addGlowEffect(generationElement);
@@ -937,6 +944,46 @@ class GameOfLife {
         if (liveCells > 0 && liveCells % 50 === 0) {
             this.addGlowEffect(liveCellsElement);
         }
+    }
+    
+    showGameOver() {
+        this.gameOverShown = true;
+        this.pause();
+        
+        const gameOverScreen = document.getElementById('gameOverScreen');
+        const finalGeneration = document.getElementById('finalGeneration');
+        const totalTime = document.getElementById('totalTime');
+        
+        // Update stats
+        finalGeneration.textContent = this.generation;
+        const elapsedTime = Math.floor((Date.now() - this.gameStartTime) / 1000);
+        totalTime.textContent = `${elapsedTime}s`;
+        
+        // Show game over screen
+        gameOverScreen.classList.remove('hidden');
+        setTimeout(() => {
+            gameOverScreen.classList.add('show');
+        }, 100);
+        
+        // Add restart button listener
+        const restartBtn = document.getElementById('restartBtn');
+        restartBtn.onclick = () => {
+            this.restartGame();
+        };
+    }
+    
+    restartGame() {
+        const gameOverScreen = document.getElementById('gameOverScreen');
+        gameOverScreen.classList.remove('show');
+        setTimeout(() => {
+            gameOverScreen.classList.add('hidden');
+        }, 500);
+        
+        this.gameOverShown = false;
+        this.gameStartTime = Date.now();
+        this.clear();
+        this.generation = 0;
+        this.updateInfo();
     }
     
     loadPattern(pattern) {
