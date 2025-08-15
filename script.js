@@ -114,17 +114,8 @@ class GameOfLife {
             document.body.classList.add('theme-watercolor');
         }
         
-        // Reset CSS variables to prevent conflicts
-        const root = document.documentElement;
-        const cssVars = [
-            '--primary-bg', '--secondary-bg', '--accent-color', '--accent-glow',
-            '--success-color', '--warning-color', '--danger-color', '--text-primary',
-            '--text-secondary', '--border-color', '--card-bg', '--glass-bg',
-            '--shadow-glow', '--shadow-card', '--gradient'
-        ];
-        cssVars.forEach(varName => {
-            root.style.removeProperty(varName);
-        });
+        // Force CSS variable update
+        this.updateCSSVariables(theme);
         
         // Update theme switcher
         document.querySelectorAll('.theme-option').forEach(option => {
