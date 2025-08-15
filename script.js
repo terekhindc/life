@@ -11,6 +11,8 @@ class GameOfLife {
         this.currentTheme = 'classic';
         this.gameOverShown = false;
         this.gameStartTime = Date.now();
+        this.isMouseDown = false;
+        this.lastCell = null;
         
         this.grid = [];
         this.nextGrid = [];
@@ -305,17 +307,31 @@ class GameOfLife {
     }
     
     handleCanvasClick(e) {
-        if (this.isRunning) return;
+        if (this.isRunning || this.gameOverShown) return;
         
         const rect = this.canvas.getBoundingClientRect();
         const x = Math.floor((e.clientX - rect.left) / this.cellSize);
         const y = Math.floor((e.clientY - rect.top) / this.cellSize);
+        
+        console.log('Canvas click:', { 
+            x, y, 
+            gridSize: this.gridSize, 
+            isRunning: this.isRunning, 
+            gameOverShown: this.gameOverShown,
+            canvasWidth: this.canvas.width,
+            canvasHeight: this.canvas.height,
+            cellSize: this.cellSize,
+            rect: rect
+        });
         
         if (x >= 0 && x < this.gridSize && y >= 0 && y < this.gridSize) {
             this.grid[y][x] = this.grid[y][x] ? 0 : 1;
             this.draw();
             this.updateInfo();
             this.addClickEffect(e.clientX, e.clientY);
+            console.log('Cell toggled at:', x, y, 'value:', this.grid[y][x]);
+        } else {
+            console.log('Click outside grid bounds');
         }
     }
     
@@ -340,17 +356,14 @@ class GameOfLife {
         }, 500);
     }
     
-    isMouseDown = false;
-    lastCell = null;
-    
     handleMouseDown(e) {
-        if (this.isRunning) return;
+        if (this.isRunning || this.gameOverShown) return;
         this.isMouseDown = true;
         this.handleCanvasClick(e);
     }
     
     handleMouseMove(e) {
-        if (!this.isMouseDown || this.isRunning) return;
+        if (!this.isMouseDown || this.isRunning || this.gameOverShown) return;
         
         const rect = this.canvas.getBoundingClientRect();
         const x = Math.floor((e.clientX - rect.left) / this.cellSize);
