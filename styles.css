@@ -1042,20 +1042,12 @@ body.theme-classic .theme-option span {
         margin: 2px;
     }
     
-    /* Mobile game description */
-    .game-description {
-        padding: 15px;
-        margin: 15px 0;
-    }
-    
-    .description-content h3 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-    }
-    
-    .description-text {
+    /* Mobile game description text */
+    .game-description-text {
         font-size: 0.9rem;
         line-height: 1.5;
+        padding: 0 15px;
+        margin: 15px 0 0 0;
     }
     
     /* Smaller icons for mobile */
@@ -2203,66 +2195,49 @@ select:hover, select:focus {
     box-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* Game Description */
-.game-description {
-    margin: 20px 0;
-    padding: 20px;
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    border-radius: 15px;
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-card);
-    transition: all 0.5s ease;
-}
-
-.description-content h3 {
-    margin: 0 0 15px 0;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--accent-color);
-    text-align: center;
-    letter-spacing: 1px;
-    text-shadow: var(--text-glow);
-}
-
-.description-text {
-    margin: 0;
+/* Game Description Text */
+.game-description-text {
+    margin: 20px 0 0 0;
     font-size: 1rem;
     line-height: 1.6;
     color: var(--text-secondary);
     text-align: center;
     font-family: 'Georgia', serif;
     font-style: italic;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
 }
 
-/* Theme-specific description styles */
-body.theme-cyber .description-content h3 {
-    text-shadow: 0 0 10px var(--accent-color);
-    animation: cyberGlow 2s ease-in-out infinite;
-}
-
-body.theme-bioluminescent .description-text {
+/* Theme-specific description text styles */
+body.theme-cyber .game-description-text {
     color: var(--accent-color);
     text-shadow: 0 0 5px var(--accent-glow);
 }
 
-body.theme-retro .description-content h3 {
-    color: #00ff00;
-    text-shadow: 0 0 8px #00ff00;
+body.theme-bioluminescent .game-description-text {
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--accent-glow);
 }
 
-body.theme-architectural .description-text {
+body.theme-retro .game-description-text {
+    color: #00ff00;
+    text-shadow: 0 0 3px #00ff00;
+}
+
+body.theme-architectural .game-description-text {
     font-family: 'Courier New', monospace;
     font-style: normal;
     color: var(--text-primary);
 }
 
-body.theme-laboratory .description-text {
+body.theme-laboratory .game-description-text {
     font-family: 'Georgia', serif;
     color: rgba(255, 255, 255, 0.9);
 }
 
-body.theme-watercolor .description-text {
+body.theme-watercolor .game-description-text {
     font-family: 'Georgia', serif;
     color: var(--text-secondary);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
