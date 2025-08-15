@@ -177,21 +177,6 @@
 
 /* Laboratory Theme */
 body.theme-laboratory {
-    --primary-bg: var(--laboratory-primary-bg);
-    --secondary-bg: var(--laboratory-secondary-bg);
-    --accent-color: var(--laboratory-accent-color);
-    --accent-glow: var(--laboratory-accent-glow);
-    --success-color: var(--laboratory-success-color);
-    --warning-color: var(--laboratory-warning-color);
-    --danger-color: var(--laboratory-danger-color);
-    --text-primary: var(--laboratory-text-primary);
-    --text-secondary: var(--laboratory-text-secondary);
-    --border-color: var(--laboratory-border-color);
-    --card-bg: var(--laboratory-card-bg);
-    --glass-bg: var(--laboratory-glass-bg);
-    --shadow-glow: var(--laboratory-shadow-glow);
-    --shadow-card: var(--laboratory-shadow-card);
-    --gradient: var(--laboratory-gradient);
     font-family: 'Inter', sans-serif;
 }
 
@@ -199,21 +184,6 @@ body.theme-laboratory {
 
 /* Watercolor Theme */
 body.theme-watercolor {
-    --primary-bg: var(--watercolor-primary-bg);
-    --secondary-bg: var(--watercolor-secondary-bg);
-    --accent-color: var(--watercolor-accent-color);
-    --accent-glow: var(--watercolor-accent-glow);
-    --success-color: var(--watercolor-success-color);
-    --warning-color: var(--watercolor-warning-color);
-    --danger-color: var(--watercolor-danger-color);
-    --text-primary: var(--watercolor-text-primary);
-    --text-secondary: var(--watercolor-text-secondary);
-    --border-color: var(--watercolor-border-color);
-    --card-bg: var(--watercolor-card-bg);
-    --glass-bg: var(--watercolor-glass-bg);
-    --shadow-glow: var(--watercolor-shadow-glow);
-    --shadow-card: var(--watercolor-shadow-card);
-    --gradient: var(--watercolor-gradient);
     font-family: 'Georgia', serif;
 }
 
@@ -221,60 +191,16 @@ body.theme-watercolor {
 
 /* Architectural Theme */
 body.theme-architectural {
-    --primary-bg: var(--architectural-primary-bg);
-    --secondary-bg: var(--architectural-secondary-bg);
-    --accent-color: var(--architectural-accent-color);
-    --accent-glow: var(--architectural-accent-glow);
-    --success-color: var(--architectural-success-color);
-    --warning-color: var(--architectural-warning-color);
-    --danger-color: var(--architectural-danger-color);
-    --text-primary: var(--architectural-text-primary);
-    --text-secondary: var(--architectural-text-secondary);
-    --border-color: var(--architectural-border-color);
-    --card-bg: var(--architectural-card-bg);
-    --glass-bg: var(--architectural-glass-bg);
-    --shadow-glow: var(--architectural-shadow-glow);
-    --shadow-card: var(--architectural-shadow-card);
-    --gradient: var(--architectural-gradient);
     font-family: 'Courier New', monospace;
 }
 
 /* Retro-Futuristic Theme */
 body.theme-retro {
-    --primary-bg: var(--retro-primary-bg);
-    --secondary-bg: var(--retro-secondary-bg);
-    --accent-color: var(--retro-accent-color);
-    --accent-glow: var(--retro-accent-glow);
-    --success-color: var(--retro-success-color);
-    --warning-color: var(--retro-warning-color);
-    --danger-color: var(--retro-danger-color);
-    --text-primary: var(--retro-text-primary);
-    --text-secondary: var(--retro-text-secondary);
-    --border-color: var(--retro-border-color);
-    --card-bg: var(--retro-card-bg);
-    --glass-bg: var(--retro-glass-bg);
-    --shadow-glow: var(--retro-shadow-glow);
-    --shadow-card: var(--retro-shadow-card);
-    --gradient: var(--retro-gradient);
     font-family: 'Courier New', monospace;
 }
 
 /* Classic Theme */
 body.theme-classic {
-    --primary-bg: var(--classic-primary-bg);
-    --secondary-bg: var(--classic-secondary-bg);
-    --accent-color: var(--classic-accent-color);
-    --accent-glow: var(--classic-accent-glow);
-    --success-color: var(--classic-success-color);
-    --warning-color: var(--classic-warning-color);
-    --danger-color: var(--classic-danger-color);
-    --text-primary: var(--classic-text-primary);
-    --text-secondary: var(--classic-text-secondary);
-    --border-color: var(--classic-border-color);
-    --card-bg: var(--classic-card-bg);
-    --glass-bg: var(--classic-glass-bg);
-    --shadow-glow: var(--classic-shadow-glow);
-    --shadow-card: var(--classic-shadow-card);
     --gradient: var(--classic-gradient);
     font-family: 'Courier New', monospace;
 }
@@ -2541,9 +2467,9 @@ body.theme-3d .game-container::before {
 }
 
 body.theme-cyber #gameCanvas {
-    border: 3px solid #ff006e;
-    background: #0a0a0f;
-    box-shadow: 0 0 30px rgba(255, 0, 110, 0.4);
+    border: 3px solid var(--accent-color);
+    background: var(--primary-bg);
+    box-shadow: 0 0 30px var(--accent-glow);
 }
 
 body.theme-cyber #gameCanvas:hover {
@@ -2558,9 +2484,9 @@ body.theme-cyber .game-container::before {
 }
 
 body.theme-bioluminescent #gameCanvas {
-    border: 3px solid #00ffff;
-    background: #0a0a1a;
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+    border: 3px solid var(--accent-color);
+    background: var(--primary-bg);
+    box-shadow: 0 0 30px var(--accent-glow);
 }
 
 body.theme-bioluminescent #gameCanvas:hover {
@@ -2576,9 +2502,9 @@ body.theme-bioluminescent .game-container::before {
 }
 
 body.theme-retro #gameCanvas {
-    border: 3px solid #00ff00;
-    background: #000000;
-    box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
+    border: 3px solid var(--accent-color);
+    background: var(--primary-bg);
+    box-shadow: 0 0 30px var(--accent-glow);
     position: relative;
 }
 
@@ -2610,9 +2536,9 @@ body.theme-retro .game-container::before {
 }
 
 body.theme-architectural #gameCanvas {
-    border: 3px solid #ffffff;
-    background: #1a3a5f;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    border: 3px solid var(--accent-color);
+    background: var(--primary-bg);
+    box-shadow: 0 0 30px var(--accent-glow);
     position: relative;
 }
 
