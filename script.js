@@ -91,13 +91,11 @@ class GameOfLife {
             document.body.classList.add('theme-retro');
         } else if (theme === 'architectural') {
             document.body.classList.add('theme-architectural');
-        } else if (theme === 'laboratory') {
+                } else if (theme === 'laboratory') {
             document.body.classList.add('theme-laboratory');
-            } else if (theme === '3d') {
-        document.body.classList.add('theme-3d');
-    } else if (theme === 'watercolor') {
-        document.body.classList.add('theme-watercolor');
-    }
+        } else if (theme === 'watercolor') {
+            document.body.classList.add('theme-watercolor');
+        }
         
         // Update theme switcher
         document.querySelectorAll('.theme-option').forEach(option => {
@@ -134,10 +132,6 @@ class GameOfLife {
                 case 'laboratory':
                     headerTitle.textContent = "CONWAY'S GAME OF LIFE";
                     editionText.textContent = 'LABORATORY EDITION • MICROBIAL COLONY SIMULATION';
-                    break;
-                case '3d':
-                    headerTitle.textContent = "CONWAY'S GAME OF LIFE";
-                    editionText.textContent = '3D EDITION • NON-EUCLIDEAN SPACE SIMULATION';
                     break;
                 case 'watercolor':
                     headerTitle.textContent = "CONWAY'S GAME OF LIFE";
@@ -288,6 +282,7 @@ class GameOfLife {
             element.style.textShadow = '';
         }, 300);
     }
+
     
     addButtonEffect(button) {
         button.style.transform = 'scale(0.95)';
@@ -430,39 +425,20 @@ class GameOfLife {
                 const neighbors = this.countNeighbors(i, j);
                 const current = this.grid[i][j];
                 
-                if (this.currentTheme === '3d') {
-                    // 3D rules: adapted for 26-neighbor simulation
-                    if (current === 1) {
-                        // Live cell in 3D space
-                        if (neighbors < 4 || neighbors > 8) {
-                            this.nextGrid[i][j] = 0; // Dies (more neighbors needed in 3D)
-                        } else {
-                            this.nextGrid[i][j] = 1; // Survives
-                        }
+                // Classic 2D rules
+                if (current === 1) {
+                    // Live cell
+                    if (neighbors < 2 || neighbors > 3) {
+                        this.nextGrid[i][j] = 0; // Dies
                     } else {
-                        // Dead cell in 3D space
-                        if (neighbors >= 5 && neighbors <= 7) {
-                            this.nextGrid[i][j] = 1; // Becomes alive (more neighbors needed)
-                        } else {
-                            this.nextGrid[i][j] = 0; // Stays dead
-                        }
+                        this.nextGrid[i][j] = 1; // Survives
                     }
                 } else {
-                    // Classic 2D rules
-                    if (current === 1) {
-                        // Live cell
-                        if (neighbors < 2 || neighbors > 3) {
-                            this.nextGrid[i][j] = 0; // Dies
-                        } else {
-                            this.nextGrid[i][j] = 1; // Survives
-                        }
+                    // Dead cell
+                    if (neighbors === 3) {
+                        this.nextGrid[i][j] = 1; // Becomes alive
                     } else {
-                        // Dead cell
-                        if (neighbors === 3) {
-                            this.nextGrid[i][j] = 1; // Becomes alive
-                        } else {
-                            this.nextGrid[i][j] = 0; // Stays dead
-                        }
+                        this.nextGrid[i][j] = 0; // Stays dead
                     }
                 }
             }
@@ -476,37 +452,17 @@ class GameOfLife {
     countNeighbors(row, col) {
         let count = 0;
         
-        if (this.currentTheme === '3d') {
-            // 3D rules: Extended neighborhood to simulate 26 neighbors
-            // Using weighted Moore neighborhood to approximate 3D behavior
-            for (let i = -2; i <= 2; i++) {
-                for (let j = -2; j <= 2; j++) {
-                    if (i === 0 && j === 0) continue;
-                    
-                    // Weight neighbors by distance (simulating 3D depth)
-                    const distance = Math.max(Math.abs(i), Math.abs(j));
-                    const weight = distance === 1 ? 1 : 0.3; // Direct neighbors have full weight
-                    
-                    const newRow = (row + i + this.gridSize) % this.gridSize;
-                    const newCol = (col + j + this.gridSize) % this.gridSize;
-                    count += this.grid[newRow][newCol] * weight;
-                }
+        // Classic 2D rules: 8 neighbors
+        for (let i = -1; i <= 1; i++) {
+            for (let j = -1; j <= 1; j++) {
+                if (i === 0 && j === 0) continue;
+                
+                const newRow = (row + i + this.gridSize) % this.gridSize;
+                const newCol = (col + j + this.gridSize) % this.gridSize;
+                count += this.grid[newRow][newCol];
             }
-            // Round to simulate discrete 3D neighbor count
-            return Math.round(count);
-        } else {
-            // Classic 2D rules: 8 neighbors
-            for (let i = -1; i <= 1; i++) {
-                for (let j = -1; j <= 1; j++) {
-                    if (i === 0 && j === 0) continue;
-                    
-                    const newRow = (row + i + this.gridSize) % this.gridSize;
-                    const newCol = (col + j + this.gridSize) % this.gridSize;
-                    count += this.grid[newRow][newCol];
-                }
-            }
-            return count;
         }
+        return count;
     }
     
     draw() {
@@ -541,12 +497,6 @@ class GameOfLife {
             this.ctx.lineWidth = 0.2;
             this.ctx.shadowColor = 'rgba(74, 144, 226, 0.1)';
             this.ctx.shadowBlur = 0.5;
-        } else if (this.currentTheme === '3d') {
-            // 3D theme: wireframe grid with depth
-            this.ctx.strokeStyle = 'rgba(0, 255, 255, 0.4)';
-            this.ctx.lineWidth = 0.3;
-            this.ctx.shadowColor = '#00ffff';
-            this.ctx.shadowBlur = 1;
         } else if (this.currentTheme === 'watercolor') {
             // Watercolor theme: subtle paper grid
             this.ctx.strokeStyle = 'rgba(255, 107, 157, 0.1)';
@@ -822,108 +772,6 @@ class GameOfLife {
                             this.ctx.lineTo(x + size/2, y + 2);
                             this.ctx.stroke();
                         }
-                    } else if (this.currentTheme === '3d') {
-                        // 3D theme: cubic cells with depth and lighting
-                        const time = Date.now() * 0.001;
-                        const neighbors = this.countNeighbors(i, j);
-                        const generation = this.generation % 15;
-                        
-                        // Determine 3D cell properties based on neighbors and generation
-                        let cubeColor, cubeGlow;
-                        if (generation < 5) {
-                            // Young 3D cells: bright cyan
-                            cubeColor = '#00ffff';
-                            cubeGlow = '#00ffff';
-                        } else if (generation < 10) {
-                            // Middle-aged 3D cells: magenta
-                            cubeColor = '#ff00ff';
-                            cubeGlow = '#ff00ff';
-                        } else {
-                            // Old 3D cells: yellow
-                            cubeColor = '#ffff00';
-                            cubeGlow = '#ffff00';
-                        }
-                        
-                        // Create 3D cube effect with perspective
-                        const centerX = x + size/2;
-                        const centerY = y + size/2;
-                        const cubeSize = size * 0.8;
-                        const depth = size * 0.3;
-                        
-                        // Calculate lighting based on position and time
-                        const lightAngle = Math.sin(time * 0.5 + i * 0.1 + j * 0.1);
-                        const brightness = 0.6 + 0.4 * lightAngle;
-                        
-                        // Draw 3D cube faces with different shading
-                        this.ctx.save();
-                        
-                        // Front face (brightest)
-                        this.ctx.fillStyle = cubeColor + Math.floor(brightness * 255).toString(16).padStart(2, '0');
-                        this.ctx.shadowColor = cubeGlow;
-                        this.ctx.shadowBlur = 5;
-                        this.ctx.fillRect(centerX - cubeSize/2, centerY - cubeSize/2, cubeSize, cubeSize);
-                        
-                        // Top face (darker)
-                        this.ctx.fillStyle = cubeColor + Math.floor(brightness * 0.7 * 255).toString(16).padStart(2, '0');
-                        this.ctx.beginPath();
-                        this.ctx.moveTo(centerX - cubeSize/2, centerY - cubeSize/2);
-                        this.ctx.lineTo(centerX - cubeSize/2 + depth, centerY - cubeSize/2 - depth);
-                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY - cubeSize/2 - depth);
-                        this.ctx.lineTo(centerX + cubeSize/2, centerY - cubeSize/2);
-                        this.ctx.closePath();
-                        this.ctx.fill();
-                        
-                        // Right face (darkest)
-                        this.ctx.fillStyle = cubeColor + Math.floor(brightness * 0.5 * 255).toString(16).padStart(2, '0');
-                        this.ctx.beginPath();
-                        this.ctx.moveTo(centerX + cubeSize/2, centerY - cubeSize/2);
-                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY - cubeSize/2 - depth);
-                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY + cubeSize/2 - depth);
-                        this.ctx.lineTo(centerX + cubeSize/2, centerY + cubeSize/2);
-                        this.ctx.closePath();
-                        this.ctx.fill();
-                        
-                        // Add wireframe edges for 3D effect
-                        this.ctx.strokeStyle = cubeGlow;
-                        this.ctx.lineWidth = 1;
-                        this.ctx.shadowBlur = 0;
-                        
-                        // Front face edges
-                        this.ctx.strokeRect(centerX - cubeSize/2, centerY - cubeSize/2, cubeSize, cubeSize);
-                        
-                        // 3D connection lines
-                        this.ctx.beginPath();
-                        this.ctx.moveTo(centerX - cubeSize/2, centerY - cubeSize/2);
-                        this.ctx.lineTo(centerX - cubeSize/2 + depth, centerY - cubeSize/2 - depth);
-                        this.ctx.moveTo(centerX + cubeSize/2, centerY - cubeSize/2);
-                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY - cubeSize/2 - depth);
-                        this.ctx.moveTo(centerX + cubeSize/2, centerY + cubeSize/2);
-                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY + cubeSize/2 - depth);
-                        this.ctx.moveTo(centerX - cubeSize/2, centerY + cubeSize/2);
-                        this.ctx.lineTo(centerX - cubeSize/2 + depth, centerY + cubeSize/2 - depth);
-                        this.ctx.stroke();
-                        
-                        // Top face edges
-                        this.ctx.beginPath();
-                        this.ctx.moveTo(centerX - cubeSize/2 + depth, centerY - cubeSize/2 - depth);
-                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY - cubeSize/2 - depth);
-                        this.ctx.lineTo(centerX + cubeSize/2 + depth, centerY + cubeSize/2 - depth);
-                        this.ctx.lineTo(centerX - cubeSize/2 + depth, centerY + cubeSize/2 - depth);
-                        this.ctx.closePath();
-                        this.ctx.stroke();
-                        
-                        this.ctx.restore();
-                        
-                        // Add rotation animation for active cells
-                        if (neighbors === 2 || neighbors === 3) {
-                            const rotationPulse = 0.3 + 0.2 * Math.sin(time * 2 + i * 0.2 + j * 0.2);
-                            this.ctx.save();
-                            this.ctx.translate(centerX, centerY);
-                            this.ctx.rotate(rotationPulse * 0.1);
-                            this.ctx.fillStyle = cubeGlow + Math.floor(rotationPulse * 255).toString(16).padStart(2, '0');
-                            this.ctx.fillRect(-2, -2, 4, 4);
-                            this.ctx.restore();
-                        }
                     } else if (this.currentTheme === 'watercolor') {
                         // Watercolor theme: realistic brush strokes with blending
                         const time = Date.now() * 0.001;
@@ -1041,7 +889,6 @@ class GameOfLife {
                             this.ctx.stroke();
                         }
                         
-
                     } else {
                         // Classic theme: simple black cells
                         this.ctx.fillStyle = '#000000';

@@ -131,29 +131,7 @@
     --laboratory-agar-texture: repeating-radial-gradient(circle at 20% 20%, transparent 0, transparent 40px, rgba(74, 144, 226, 0.03) 40px, rgba(74, 144, 226, 0.03) 41px);
     --laboratory-petri-border: linear-gradient(45deg, rgba(74, 144, 226, 0.3), rgba(80, 200, 120, 0.2), rgba(74, 144, 226, 0.3));
 
-    /* 3D Life Theme Variables - Non-Euclidean Spaces */
-    --3d-primary-bg: #0a0a0a;
-    --3d-secondary-bg: #1a1a1a;
-    --3d-accent-color: #00ffff;
-    --3d-accent-glow: #00ffff40;
-    --3d-accent-secondary: #ff00ff;
-    --3d-accent-tertiary: #ffff00;
-    --3d-success-color: #00ff00;
-    --3d-warning-color: #ff8800;
-    --3d-danger-color: #ff0080;
-    --3d-text-primary: #ffffff;
-    --3d-text-secondary: #cccccc;
-    --3d-border-color: #00ffff;
-    --3d-card-bg: rgba(10, 10, 10, 0.95);
-    --3d-glass-bg: rgba(0, 255, 255, 0.05);
-    --3d-shadow-glow: 0 0 30px var(--3d-accent-glow);
-    --3d-shadow-card: 0 8px 32px rgba(0, 255, 255, 0.2);
-    --3d-gradient: radial-gradient(ellipse at center, #0a0a0a 0%, #1a1a1a 70%);
-    --3d-glow: 0 0 30px rgba(0, 255, 255, 0.4);
-    --3d-text-glow: 0 0 15px rgba(0, 255, 255, 0.6);
-    --3d-cube-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-    --3d-wireframe: rgba(0, 255, 255, 0.3);
-    --3d-depth-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+
 
     /* Watercolor Theme Variables - Artistic Painting */
     --watercolor-primary-bg: #fefefe;
@@ -217,25 +195,7 @@ body.theme-laboratory {
     font-family: 'Inter', sans-serif;
 }
 
-/* 3D Life Theme */
-body.theme-3d {
-    --primary-bg: var(--3d-primary-bg);
-    --secondary-bg: var(--3d-secondary-bg);
-    --accent-color: var(--3d-accent-color);
-    --accent-glow: var(--3d-accent-glow);
-    --success-color: var(--3d-success-color);
-    --warning-color: var(--3d-warning-color);
-    --danger-color: var(--3d-danger-color);
-    --text-primary: var(--3d-text-primary);
-    --text-secondary: var(--3d-text-secondary);
-    --border-color: var(--3d-border-color);
-    --card-bg: var(--3d-card-bg);
-    --glass-bg: var(--3d-glass-bg);
-    --shadow-glow: var(--3d-shadow-glow);
-    --shadow-card: var(--3d-shadow-card);
-    --gradient: var(--3d-gradient);
-    font-family: 'Orbitron', monospace;
-}
+
 
 /* Watercolor Theme */
 body.theme-watercolor {
@@ -256,6 +216,8 @@ body.theme-watercolor {
     --gradient: var(--watercolor-gradient);
     font-family: 'Georgia', serif;
 }
+
+
 
 /* Architectural Theme */
 body.theme-architectural {
@@ -689,15 +651,19 @@ body.theme-architectural::before {
 .theme-switcher {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
     margin-bottom: 30px;
     background: var(--card-bg);
     backdrop-filter: blur(20px);
-    padding: 20px;
+    padding: 15px;
     border-radius: 15px;
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-card);
     transition: all 0.5s ease;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 body.theme-classic .theme-switcher {
@@ -708,12 +674,14 @@ body.theme-classic .theme-switcher {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     cursor: pointer;
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+    min-width: 80px;
+    flex-shrink: 0;
 }
 
 .theme-option:hover {
@@ -728,9 +696,9 @@ body.theme-classic .theme-switcher {
 }
 
 .theme-preview {
-    width: 80px;
-    height: 50px;
-    border-radius: 12px;
+    width: 60px;
+    height: 40px;
+    border-radius: 8px;
     border: 2px solid var(--border-color);
     position: relative;
     overflow: hidden;
@@ -751,7 +719,7 @@ body.theme-classic .theme-switcher {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 20px;
+    font-size: 16px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
@@ -900,32 +868,7 @@ body.theme-classic .theme-switcher {
     animation: bioluminescentPulse 3s ease-in-out infinite;
 }
 
-.theme-3d-preview {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-    border: 2px solid #00ffff;
-}
 
-.theme-3d-preview::before {
-    content: '🎲';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 18px;
-    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.8));
-    animation: cyberGlow 2s ease-in-out infinite;
-}
-
-.theme-3d-preview::after {
-    content: '⚡';
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    font-size: 8px;
-    color: #ff00ff;
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.8);
-    animation: cyberGlow 1.5s ease-in-out infinite;
-}
 
 .watercolor-preview {
     background: var(--watercolor-paper-color);
@@ -956,19 +899,157 @@ body.theme-classic .theme-switcher {
     animation: watercolorFlow 1.5s ease-in-out infinite;
 }
 
+
+
 .theme-option span {
     font-weight: 600;
     color: var(--text-primary);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 12px;
+    letter-spacing: 0.5px;
+    font-size: 10px;
     transition: all 0.3s ease;
+    text-align: center;
+    line-height: 1.2;
 }
 
 body.theme-classic .theme-option span {
     text-transform: none;
     letter-spacing: normal;
     font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .theme-switcher {
+        gap: 10px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .theme-option {
+        padding: 8px;
+        gap: 6px;
+        min-width: 70px;
+    }
+    
+    .theme-preview {
+        width: 50px;
+        height: 35px;
+        border-radius: 6px;
+    }
+    
+    .theme-option span {
+        font-size: 9px;
+        letter-spacing: 0.3px;
+    }
+    
+    .container {
+        padding: 15px;
+        max-width: 100%;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    
+    header p {
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .control-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+    
+    .patterns {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .pattern-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+        margin: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .theme-switcher {
+        gap: 8px;
+        padding: 8px;
+    }
+    
+    .theme-option {
+        padding: 6px;
+        gap: 4px;
+        min-width: 60px;
+    }
+    
+    .theme-preview {
+        width: 45px;
+        height: 30px;
+        border-radius: 5px;
+    }
+    
+    .theme-option span {
+        font-size: 8px;
+        letter-spacing: 0.2px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 1.3rem;
+    }
+    
+    header p {
+        font-size: 0.7rem;
+    }
+    
+    .btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .patterns {
+        padding: 15px;
+    }
+    
+    .pattern-btn {
+        padding: 6px 10px;
+        font-size: 10px;
+        margin: 2px;
+    }
+    
+    /* Smaller icons for mobile */
+    .theme-preview::before {
+        font-size: 12px !important;
+    }
+    
+    .theme-preview::after {
+        font-size: 6px !important;
+    }
 }
 
 /* Animated background particles */
@@ -1845,48 +1926,7 @@ body.theme-laboratory .btn-secondary:hover {
     box-shadow: 0 0 20px var(--accent-glow);
 }
 
-body.theme-3d .btn {
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
-    color: var(--text-primary);
-    border: 2px solid var(--accent-color);
-    box-shadow: var(--shadow-glow);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    position: relative;
-    overflow: hidden;
-}
 
-body.theme-3d .btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    animation: scan 2s infinite;
-}
-
-body.theme-3d .btn:hover {
-    background: linear-gradient(135deg, var(--accent-secondary), var(--accent-color));
-    transform: translateY(-2px);
-    box-shadow: 0 0 30px var(--accent-glow);
-}
-
-body.theme-3d .btn-secondary {
-    background: transparent;
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-    text-shadow: 0 0 5px var(--accent-glow);
-}
-
-body.theme-3d .btn-secondary:hover {
-    background: var(--accent-glow);
-    color: var(--text-primary);
-    text-shadow: none;
-    box-shadow: 0 0 25px var(--accent-glow);
-}
 
 /* Watercolor Theme Button Styles */
 body.theme-watercolor .btn {
@@ -1950,6 +1990,8 @@ body.theme-watercolor .btn-secondary:hover {
     border-color: #e67e22;
     color: white;
 }
+
+
 
 .btn-secondary:hover {
     transform: translateY(-2px);
@@ -2021,15 +2063,7 @@ body.theme-laboratory label {
     font-size: 14px;
 }
 
-body.theme-3d label {
-    font-family: 'Orbitron', monospace;
-    font-weight: 700;
-    color: var(--accent-color);
-    text-shadow: 0 0 10px var(--accent-glow);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 12px;
-}
+
 
 body.theme-watercolor label {
     font-family: 'Georgia', serif;
@@ -2040,6 +2074,8 @@ body.theme-watercolor label {
     letter-spacing: 0.5px;
     font-size: 14px;
 }
+
+
 
 input[type="range"] {
     width: 120px;
@@ -2488,6 +2524,8 @@ body.theme-watercolor #gameCanvas:hover {
     border-color: var(--accent-secondary);
     box-shadow: 0 0 40px var(--accent-glow);
 }
+
+
 
 body.theme-architectural .game-container {
     border: 2px solid #ffffff;
@@ -3359,3 +3397,26 @@ body.theme-laboratory .game-container::before {
         opacity: 0.9;
     }
 }
+
+@keyframes ukiyo-ePaperShimmer {
+    0%, 100% { 
+        opacity: 0.7; 
+        transform: translateX(0px);
+    }
+    25% { 
+        opacity: 0.8; 
+        transform: translateX(1px);
+    }
+    50% { 
+        opacity: 0.75; 
+        transform: translateX(0px);
+    }
+    75% { 
+        opacity: 0.8; 
+        transform: translateX(-1px);
+    }
+}
+
+
+
+
