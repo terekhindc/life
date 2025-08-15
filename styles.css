@@ -2360,6 +2360,12 @@ body.theme-bioluminescent .info-item span:last-child {
     z-index: 1000;
     opacity: 0;
     transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.game-over-screen.show {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .game-over-screen.show {
@@ -2427,6 +2433,19 @@ body.theme-bioluminescent .info-item span:last-child {
     }
 }
 
+@keyframes bioluminescentGameOverPulse {
+    0%, 100% { 
+        opacity: 0.8; 
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px #00ffff);
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 20px #00ffff) drop-shadow(0 0 30px #00ffff);
+    }
+}
+
 /* Theme-specific game over styles */
 body.theme-cyber .game-over-title {
     animation: cyberGlitch 2s ease-in-out infinite;
@@ -2439,7 +2458,10 @@ body.theme-retro .game-over-title {
 }
 
 body.theme-bioluminescent .game-over-title {
-    animation: bioluminescentPulse 2s ease-in-out infinite;
+    animation: bioluminescentGameOverPulse 2s ease-in-out infinite;
+    text-align: center;
+    width: 100%;
+    transform-origin: center;
 }
 
 body.theme-laboratory .game-over-content {
