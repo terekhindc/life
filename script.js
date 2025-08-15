@@ -313,26 +313,19 @@ class GameOfLife {
         const x = Math.floor((e.clientX - rect.left) / this.cellSize);
         const y = Math.floor((e.clientY - rect.top) / this.cellSize);
         
-        console.log('Canvas click:', { 
-            x, y, 
-            gridSize: this.gridSize, 
-            isRunning: this.isRunning, 
-            gameOverShown: this.gameOverShown,
-            canvasWidth: this.canvas.width,
-            canvasHeight: this.canvas.height,
-            cellSize: this.cellSize,
-            rect: rect
-        });
+        console.log('Canvas click detected:', { x, y, isRunning: this.isRunning, gameOverShown: this.gameOverShown });
         
         if (x >= 0 && x < this.gridSize && y >= 0 && y < this.gridSize) {
-            this.grid[y][x] = this.grid[y][x] ? 0 : 1;
-            this.draw();
-            this.updateInfo();
+            this.toggleCell(x, y);
             this.addClickEffect(e.clientX, e.clientY);
-            console.log('Cell toggled at:', x, y, 'value:', this.grid[y][x]);
-        } else {
-            console.log('Click outside grid bounds');
+            console.log('Cell toggled via click at:', x, y);
         }
+    }
+    
+    toggleCell(x, y) {
+        this.grid[y][x] = this.grid[y][x] ? 0 : 1;
+        this.draw();
+        this.updateInfo();
     }
     
     addClickEffect(x, y) {
@@ -359,7 +352,7 @@ class GameOfLife {
     handleMouseDown(e) {
         if (this.isRunning || this.gameOverShown) return;
         this.isMouseDown = true;
-        this.handleCanvasClick(e);
+        // Don't call handleCanvasClick here to avoid double-toggling
     }
     
     handleMouseMove(e) {
@@ -372,10 +365,8 @@ class GameOfLife {
         if (x >= 0 && x < this.gridSize && y >= 0 && y < this.gridSize) {
             const currentCell = `${x},${y}`;
             if (currentCell !== this.lastCell) {
-                this.grid[y][x] = this.grid[y][x] ? 0 : 1;
+                this.toggleCell(x, y);
                 this.lastCell = currentCell;
-                this.draw();
-                this.updateInfo();
             }
         }
     }

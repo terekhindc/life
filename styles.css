@@ -3053,6 +3053,186 @@ body.theme-bioluminescent .instructions h3 {
     transition: all 0.3s ease;
 }
 
+/* Game Rules Section */
+.game-rules {
+    margin-bottom: 30px;
+}
+
+.game-rules h4 {
+    color: var(--accent-color);
+    margin: 0 0 20px 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 0 0 8px var(--accent-glow);
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.rule-item {
+    display: flex;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.rule-item:hover {
+    border-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.rule-number {
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-right: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.rule-content {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.rule-content strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Controls Help Section */
+.controls-help {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.controls-help h4 {
+    color: var(--accent-color);
+    margin: 0 0 15px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-shadow: 0 0 8px var(--accent-glow);
+}
+
+.controls-help ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.controls-help li {
+    color: var(--text-secondary);
+    margin: 8px 0;
+    padding: 6px 0;
+    border-left: 2px solid var(--border-color);
+    padding-left: 12px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.controls-help li:hover {
+    color: var(--text-primary);
+    border-left-color: var(--accent-color);
+    padding-left: 15px;
+}
+
+/* Theme-specific rule styles */
+body.theme-cyber .rule-item {
+    background: rgba(255, 0, 110, 0.1);
+    border-color: rgba(255, 0, 110, 0.3);
+}
+
+body.theme-cyber .rule-item:hover {
+    background: rgba(255, 0, 110, 0.15);
+    border-color: #ff006e;
+    box-shadow: 0 5px 20px rgba(255, 0, 110, 0.3);
+}
+
+body.theme-bioluminescent .rule-item {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: rgba(0, 255, 255, 0.3);
+}
+
+body.theme-bioluminescent .rule-item:hover {
+    background: rgba(0, 255, 255, 0.15);
+    border-color: #00ffff;
+    box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
+}
+
+body.theme-retro .rule-item {
+    background: rgba(0, 255, 0, 0.1);
+    border-color: rgba(0, 255, 0, 0.3);
+}
+
+body.theme-retro .rule-item:hover {
+    background: rgba(0, 255, 0, 0.15);
+    border-color: #00ff00;
+    box-shadow: 0 5px 20px rgba(0, 255, 0, 0.3);
+}
+
+body.theme-laboratory .rule-item {
+    background: rgba(74, 144, 226, 0.1);
+    border-color: rgba(74, 144, 226, 0.3);
+}
+
+body.theme-laboratory .rule-item:hover {
+    background: rgba(74, 144, 226, 0.15);
+    border-color: #4a90e2;
+    box-shadow: 0 5px 20px rgba(74, 144, 226, 0.3);
+}
+
+body.theme-watercolor .rule-item {
+    background: rgba(255, 107, 157, 0.1);
+    border-color: rgba(255, 107, 157, 0.3);
+}
+
+body.theme-watercolor .rule-item:hover {
+    background: rgba(255, 107, 157, 0.15);
+    border-color: #ff6b9d;
+    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.3);
+}
+
+/* Mobile responsiveness for rules */
+@media (max-width: 768px) {
+    .rules-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .rule-item {
+        padding: 12px;
+    }
+    
+    .rule-number {
+        width: 25px;
+        height: 25px;
+        font-size: 1rem;
+        margin-right: 12px;
+    }
+    
+    .rule-content {
+        font-size: 0.9rem;
+    }
+}
+
 body.theme-cyber .instructions li:before {
     content: "⚡";
     color: #ff006e;
