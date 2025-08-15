@@ -18,7 +18,7 @@ Interactive web version of John Conway's classic "Game of Life" with multiple vi
 4. **Retro** - Retro-futuristic monitor with CRT effects
 5. **Architectural** - Technical blueprint with architectural elements
 6. **Laboratory** - Laboratory under microscope with microbial colonies
-7. **3D Life** - Three-dimensional life in non-Euclidean spaces
+7. **Watercolor** - Artistic watercolor painting simulation
 
 ### Technical Features
 - **HTML5 Canvas**: High-performance rendering
@@ -79,11 +79,11 @@ python3 -m http.server 8000
 - Agar nutrient medium
 - Organic cell shapes
 
-### 3D Life Edition
-- Non-Euclidean spaces
-- Three-dimensional cubes
-- Neon effects
-- Futuristic design
+### Watercolor Edition
+- Artistic brush strokes
+- Color blending effects
+- Paper texture background
+- Age-based color changes
 
 ## 🎯 Controls
 
